@@ -9,7 +9,7 @@ namespace AwesomePokerGameSln.Code {
     ROYAL_FLUSH,
     STR_FLUSH,
     FOUR,
-    FULL_HOUSE,
+    FULL_HOUSE, // DOESNT WORK
     FLUSH,
     STRAIGHT,
     THREE,
@@ -20,6 +20,16 @@ namespace AwesomePokerGameSln.Code {
 
   public class Hand {
     private Tuple<int, int>[] cards;
+
+        public int GetLength()
+        {
+            return cards.Length;
+        }
+
+        public Tuple<int, int> GetCardI (int index)
+        {
+            return cards[index];
+        }
 
     public Hand(Tuple<int, int>[] cards) {
       this.cards = cards;
