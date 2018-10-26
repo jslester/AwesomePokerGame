@@ -137,6 +137,7 @@ namespace AwesomePokerGameSln {
             }
             selectedCards = new List<PictureBox>();
             CheckHand();
+
             foldButton.Enabled = false;
             replaceCards.Enabled = false;
             redealButton.Enabled = true;
