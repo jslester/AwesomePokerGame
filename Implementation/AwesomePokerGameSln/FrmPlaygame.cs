@@ -125,8 +125,16 @@ namespace AwesomePokerGameSln {
                 i++;
             }
             playerHand = new Hand(cards);
+            
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                if (selectedCards.Contains(singlebox))
+                {
+                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
+                }
+                singlebox.Enabled = false;
 
-
+            }
             selectedCards = new List<PictureBox>();
             CheckHand();
             foldButton.Enabled = false;
@@ -152,6 +160,11 @@ namespace AwesomePokerGameSln {
             chatBox.Items.Add("Dealer: GoodLuck!");
             redealButton.Enabled = false;
             foldButton.Enabled = true;
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                singlebox.Enabled = true;
+
+            }
             dealCards();
         }
 
@@ -164,9 +177,15 @@ namespace AwesomePokerGameSln {
         private void cardClickHandler(object sender, EventArgs e)
         {
             PictureBox picSender = (PictureBox)sender;
-            chatBox.Items.Add(picSender.Name);
+            if (!selectedCards.Contains(picSender))
+            {
+                picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
 
-            selectedCards.Add(picSender);
+                chatBox.Items.Add(picSender.Name);
+
+                selectedCards.Add(picSender);
+            }
+            
         }
 
         private void foldButton_Click(object sender, EventArgs e)
