@@ -42,6 +42,7 @@
 			this.dealerHandType = new System.Windows.Forms.Label();
 			this.replaceCards = new System.Windows.Forms.Button();
 			this.foldButton = new System.Windows.Forms.Button();
+			this.pictureBox6 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -52,14 +53,15 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// picCard1
 			// 
 			this.picCard1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picCard1.Location = new System.Drawing.Point(76, 183);
+			this.picCard1.Location = new System.Drawing.Point(76, 220);
 			this.picCard1.Name = "picCard1";
-			this.picCard1.Size = new System.Drawing.Size(112, 120);
+			this.picCard1.Size = new System.Drawing.Size(100, 150);
 			this.picCard1.TabIndex = 0;
 			this.picCard1.TabStop = false;
 			this.picCard1.Click += new System.EventHandler(this.cardClickHandler);
@@ -67,9 +69,9 @@
 			// picCard3
 			// 
 			this.picCard3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picCard3.Location = new System.Drawing.Point(345, 183);
+			this.picCard3.Location = new System.Drawing.Point(345, 220);
 			this.picCard3.Name = "picCard3";
-			this.picCard3.Size = new System.Drawing.Size(112, 120);
+			this.picCard3.Size = new System.Drawing.Size(100, 150);
 			this.picCard3.TabIndex = 1;
 			this.picCard3.TabStop = false;
 			this.picCard3.Click += new System.EventHandler(this.cardClickHandler);
@@ -77,9 +79,9 @@
 			// picCard4
 			// 
 			this.picCard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picCard4.Location = new System.Drawing.Point(480, 183);
+			this.picCard4.Location = new System.Drawing.Point(480, 220);
 			this.picCard4.Name = "picCard4";
-			this.picCard4.Size = new System.Drawing.Size(112, 120);
+			this.picCard4.Size = new System.Drawing.Size(100, 150);
 			this.picCard4.TabIndex = 2;
 			this.picCard4.TabStop = false;
 			this.picCard4.Click += new System.EventHandler(this.cardClickHandler);
@@ -87,9 +89,9 @@
 			// picCard5
 			// 
 			this.picCard5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picCard5.Location = new System.Drawing.Point(619, 183);
+			this.picCard5.Location = new System.Drawing.Point(619, 220);
 			this.picCard5.Name = "picCard5";
-			this.picCard5.Size = new System.Drawing.Size(112, 120);
+			this.picCard5.Size = new System.Drawing.Size(100, 150);
 			this.picCard5.TabIndex = 3;
 			this.picCard5.TabStop = false;
 			this.picCard5.Click += new System.EventHandler(this.cardClickHandler);
@@ -97,9 +99,9 @@
 			// picCard2
 			// 
 			this.picCard2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picCard2.Location = new System.Drawing.Point(211, 183);
+			this.picCard2.Location = new System.Drawing.Point(211, 220);
 			this.picCard2.Name = "picCard2";
-			this.picCard2.Size = new System.Drawing.Size(112, 120);
+			this.picCard2.Size = new System.Drawing.Size(100, 150);
 			this.picCard2.TabIndex = 4;
 			this.picCard2.TabStop = false;
 			this.picCard2.Click += new System.EventHandler(this.cardClickHandler);
@@ -107,7 +109,7 @@
 			// redealButton
 			// 
 			this.redealButton.BackColor = System.Drawing.Color.CornflowerBlue;
-			this.redealButton.Location = new System.Drawing.Point(111, 324);
+			this.redealButton.Location = new System.Drawing.Point(296, 385);
 			this.redealButton.Name = "redealButton";
 			this.redealButton.Size = new System.Drawing.Size(179, 86);
 			this.redealButton.TabIndex = 6;
@@ -119,7 +121,7 @@
 			// 
 			this.playerHandType.AutoSize = true;
 			this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.playerHandType.Location = new System.Drawing.Point(410, 345);
+			this.playerHandType.Location = new System.Drawing.Point(80, 397);
 			this.playerHandType.Name = "playerHandType";
 			this.playerHandType.Size = new System.Drawing.Size(99, 33);
 			this.playerHandType.TabIndex = 7;
@@ -130,7 +132,7 @@
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox1.Location = new System.Drawing.Point(211, 12);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(112, 120);
+			this.pictureBox1.Size = new System.Drawing.Size(100, 150);
 			this.pictureBox1.TabIndex = 12;
 			this.pictureBox1.TabStop = false;
 			this.pictureBox1.Click += new System.EventHandler(this.cardClickHandler);
@@ -140,7 +142,7 @@
 			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox2.Location = new System.Drawing.Point(619, 12);
 			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(112, 120);
+			this.pictureBox2.Size = new System.Drawing.Size(100, 150);
 			this.pictureBox2.TabIndex = 11;
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Click += new System.EventHandler(this.cardClickHandler);
@@ -150,7 +152,7 @@
 			this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox3.Location = new System.Drawing.Point(480, 12);
 			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(112, 120);
+			this.pictureBox3.Size = new System.Drawing.Size(100, 150);
 			this.pictureBox3.TabIndex = 10;
 			this.pictureBox3.TabStop = false;
 			this.pictureBox3.Click += new System.EventHandler(this.cardClickHandler);
@@ -160,7 +162,7 @@
 			this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox4.Location = new System.Drawing.Point(345, 12);
 			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(112, 120);
+			this.pictureBox4.Size = new System.Drawing.Size(100, 150);
 			this.pictureBox4.TabIndex = 9;
 			this.pictureBox4.TabStop = false;
 			this.pictureBox4.Click += new System.EventHandler(this.cardClickHandler);
@@ -170,7 +172,7 @@
 			this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox5.Location = new System.Drawing.Point(76, 12);
 			this.pictureBox5.Name = "pictureBox5";
-			this.pictureBox5.Size = new System.Drawing.Size(112, 120);
+			this.pictureBox5.Size = new System.Drawing.Size(100, 150);
 			this.pictureBox5.TabIndex = 8;
 			this.pictureBox5.TabStop = false;
 			this.pictureBox5.Click += new System.EventHandler(this.cardClickHandler);
@@ -178,8 +180,8 @@
 			// chatBox
 			// 
 			this.chatBox.FormattingEnabled = true;
-			this.chatBox.Location = new System.Drawing.Point(784, 32);
-			this.chatBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.chatBox.Location = new System.Drawing.Point(784, 166);
+			this.chatBox.Margin = new System.Windows.Forms.Padding(2);
 			this.chatBox.Name = "chatBox";
 			this.chatBox.ScrollAlwaysVisible = true;
 			this.chatBox.Size = new System.Drawing.Size(228, 251);
@@ -188,8 +190,8 @@
 			// typeBox
 			// 
 			this.typeBox.ForeColor = System.Drawing.SystemColors.GrayText;
-			this.typeBox.Location = new System.Drawing.Point(784, 288);
-			this.typeBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.typeBox.Location = new System.Drawing.Point(784, 421);
+			this.typeBox.Margin = new System.Windows.Forms.Padding(2);
 			this.typeBox.Multiline = true;
 			this.typeBox.Name = "typeBox";
 			this.typeBox.Size = new System.Drawing.Size(150, 41);
@@ -198,8 +200,8 @@
 			// 
 			// chatSendButton
 			// 
-			this.chatSendButton.Location = new System.Drawing.Point(937, 288);
-			this.chatSendButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.chatSendButton.Location = new System.Drawing.Point(938, 421);
+			this.chatSendButton.Margin = new System.Windows.Forms.Padding(2);
 			this.chatSendButton.Name = "chatSendButton";
 			this.chatSendButton.Size = new System.Drawing.Size(74, 41);
 			this.chatSendButton.TabIndex = 15;
@@ -211,17 +213,18 @@
 			// 
 			this.dealerHandType.AutoSize = true;
 			this.dealerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dealerHandType.Location = new System.Drawing.Point(349, 135);
+			this.dealerHandType.Location = new System.Drawing.Point(80, 172);
 			this.dealerHandType.Name = "dealerHandType";
 			this.dealerHandType.Size = new System.Drawing.Size(99, 33);
 			this.dealerHandType.TabIndex = 16;
 			this.dealerHandType.Text = "label2";
+			this.dealerHandType.Click += new System.EventHandler(this.dealerHandType_Click);
 			// 
 			// replaceCards
 			// 
 			this.replaceCards.BackColor = System.Drawing.Color.CornflowerBlue;
-			this.replaceCards.Location = new System.Drawing.Point(619, 323);
-			this.replaceCards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.replaceCards.Location = new System.Drawing.Point(553, 383);
+			this.replaceCards.Margin = new System.Windows.Forms.Padding(2);
 			this.replaceCards.Name = "replaceCards";
 			this.replaceCards.Size = new System.Drawing.Size(112, 34);
 			this.replaceCards.TabIndex = 17;
@@ -232,8 +235,8 @@
 			// foldButton
 			// 
 			this.foldButton.BackColor = System.Drawing.Color.CornflowerBlue;
-			this.foldButton.Location = new System.Drawing.Point(619, 376);
-			this.foldButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.foldButton.Location = new System.Drawing.Point(553, 430);
+			this.foldButton.Margin = new System.Windows.Forms.Padding(2);
 			this.foldButton.Name = "foldButton";
 			this.foldButton.Size = new System.Drawing.Size(112, 32);
 			this.foldButton.TabIndex = 18;
@@ -241,13 +244,24 @@
 			this.foldButton.UseVisualStyleBackColor = false;
 			this.foldButton.Click += new System.EventHandler(this.foldButton_Click);
 			// 
+			// pictureBox6
+			// 
+			this.pictureBox6.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.Deck;
+			this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pictureBox6.Location = new System.Drawing.Point(784, 12);
+			this.pictureBox6.Name = "pictureBox6";
+			this.pictureBox6.Size = new System.Drawing.Size(100, 150);
+			this.pictureBox6.TabIndex = 19;
+			this.pictureBox6.TabStop = false;
+			// 
 			// FrmPlaygame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(1042, 450);
+			this.ClientSize = new System.Drawing.Size(1042, 497);
+			this.Controls.Add(this.pictureBox6);
 			this.Controls.Add(this.foldButton);
 			this.Controls.Add(this.replaceCards);
 			this.Controls.Add(this.dealerHandType);
@@ -280,6 +294,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -305,5 +320,6 @@
                 private System.Windows.Forms.Label dealerHandType;
         private System.Windows.Forms.Button replaceCards;
         private System.Windows.Forms.Button foldButton;
-    }
+		private System.Windows.Forms.PictureBox pictureBox6;
+	}
 }

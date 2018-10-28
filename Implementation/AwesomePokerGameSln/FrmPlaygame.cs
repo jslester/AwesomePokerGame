@@ -68,8 +68,8 @@ namespace AwesomePokerGameSln {
             playerHandType.Text = playerHT.ToString();
             dealerHandType.Text = dealerHT.ToString();
 
-            chatBox.Items.Add("Player: " + (int)playerHT);
-            chatBox.Items.Add("Dealer: " + (int)dealerHT);
+            chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
+            chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
 
             if ((int)playerHT < (int)dealerHT)
             {
@@ -194,5 +194,10 @@ namespace AwesomePokerGameSln {
             replaceCards.Enabled = false;
             redealButton.Enabled = true;
         }
-    }
+
+		private void dealerHandType_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
