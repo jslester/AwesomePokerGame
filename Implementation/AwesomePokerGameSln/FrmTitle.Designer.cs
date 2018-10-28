@@ -96,9 +96,9 @@
 			// 
 			this.picRulebook.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.rule_book;
 			this.picRulebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.picRulebook.Location = new System.Drawing.Point(204, 114);
+			this.picRulebook.Location = new System.Drawing.Point(12, 9);
 			this.picRulebook.Name = "picRulebook";
-			this.picRulebook.Size = new System.Drawing.Size(505, 311);
+			this.picRulebook.Size = new System.Drawing.Size(926, 433);
 			this.picRulebook.TabIndex = 5;
 			this.picRulebook.TabStop = false;
 			this.picRulebook.Visible = false;
