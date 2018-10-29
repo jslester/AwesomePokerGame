@@ -68,8 +68,8 @@ namespace AwesomePokerGameSln {
             playerHandType.Text = playerHT.ToString();
             dealerHandType.Text = dealerHT.ToString();
 
-            chatBox.Items.Add("Player: " + (int)playerHT);
-            chatBox.Items.Add("Dealer: " + (int)dealerHT);
+            chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
+            chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
 
             if ((int)playerHT < (int)dealerHT)
             {
@@ -177,14 +177,22 @@ namespace AwesomePokerGameSln {
         private void cardClickHandler(object sender, EventArgs e)
         {
             PictureBox picSender = (PictureBox)sender;
-            if (!selectedCards.Contains(picSender))
-            {
-                picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
+			if (!selectedCards.Contains(picSender))
+			{
+				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
 
-                chatBox.Items.Add(picSender.Name);
+				chatBox.Items.Add(picSender.Name + " Selected");
 
-                selectedCards.Add(picSender);
-            }
+				selectedCards.Add(picSender);
+			}
+			else
+			{
+				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
+
+				chatBox.Items.Add(picSender.Name + " Unselected");
+
+				selectedCards.Remove(picSender);
+			}
             
         }
 
@@ -193,6 +201,24 @@ namespace AwesomePokerGameSln {
             foldButton.Enabled = false;
             replaceCards.Enabled = false;
             redealButton.Enabled = true;
+
+			foreach (PictureBox singlebox in playerCardPics)
+            {
+                if (selectedCards.Contains(singlebox))
+                {
+                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
+                }
+                singlebox.Enabled = false;
+
+				selectedCards.Remove(singlebox);
+
+            }
+
         }
-    }
+
+		private void dealerHandType_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
