@@ -173,7 +173,8 @@ namespace AwesomePokerGameSln {
         private void chatSendButton_Click(object sender, EventArgs e)
         {
             chatBox.Items.Add("Me: " + typeBox.Text);
-            typeBox.Text = "";
+            typeBox.Text = "Enter a message:";
+            typeBox.ForeColor = Color.Gray;
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
@@ -217,6 +218,36 @@ namespace AwesomePokerGameSln {
 
             }
 
+        }
+
+        private void TypeBox_Enter(object sender, EventArgs e)
+        {
+            if (typeBox.Text == "Enter a message:")
+            {
+                typeBox.Text = "";
+
+                typeBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                chatBox.Items.Add("Me: " + typeBox.Text);
+                e.SuppressKeyPress = true;
+                typeBox.Text = "";
+                chatBox.TopIndex = chatBox.Items.Count - 1;
+            }
+        }
+
+        private void TypeBox_Leave(object sender, EventArgs e)
+        {
+            if (typeBox.Text == "")
+            {
+                typeBox.Text = "Enter a message:";
+                typeBox.ForeColor = Color.Gray;
+            }
         }
     }
 }
