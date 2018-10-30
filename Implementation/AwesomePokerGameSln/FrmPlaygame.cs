@@ -155,7 +155,8 @@ namespace AwesomePokerGameSln {
         }
         //Need to add a way to disable clicking cards after new hand is dealt
         //Need to figure out if can stop from pressing more than once. Maybe change/ check the y value?
-
+        //
+        //
         private void redealButton_Click(object sender, EventArgs e) {
             chatBox.Items.Add("Dealer: GoodLuck!");
             redealButton.Enabled = false;
