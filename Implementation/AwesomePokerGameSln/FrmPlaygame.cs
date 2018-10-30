@@ -172,8 +172,9 @@ namespace AwesomePokerGameSln {
 
         private void chatSendButton_Click(object sender, EventArgs e)
         {
-                chatBox.Items.Add("Me: " + typeBox.Text);
-                typeBox.Text = "";
+            chatBox.Items.Add("Me: " + typeBox.Text);
+            typeBox.Text = "";
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void cardClickHandler(object sender, EventArgs e)
@@ -222,5 +223,10 @@ namespace AwesomePokerGameSln {
 		{
 
 		}
-	}
+
+        private void chatBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
