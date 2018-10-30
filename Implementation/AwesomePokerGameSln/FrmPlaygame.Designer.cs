@@ -199,13 +199,16 @@ namespace AwesomePokerGameSln {
             // 
             // typeBox
             // 
-            this.typeBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.typeBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.typeBox.Location = new System.Drawing.Point(1176, 648);
             this.typeBox.Multiline = true;
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(223, 61);
             this.typeBox.TabIndex = 14;
-            this.typeBox.Text = "Enter a message: ";
+            this.typeBox.Text = "Enter a message:";
+            this.typeBox.Enter += new System.EventHandler(this.TypeBox_Enter);
+            this.typeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TypeBox_Press_Enter);
+            this.typeBox.Leave += new System.EventHandler(this.TypeBox_Leave);
             // 
             // chatSendButton
             // 
