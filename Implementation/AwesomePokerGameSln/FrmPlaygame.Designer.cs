@@ -195,6 +195,7 @@
 			// 
 			// chatSendButton
 			// 
+
 			this.chatSendButton.Location = new System.Drawing.Point(938, 421);
 			this.chatSendButton.Margin = new System.Windows.Forms.Padding(2);
 			this.chatSendButton.Name = "chatSendButton";
