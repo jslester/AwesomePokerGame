@@ -1,4 +1,6 @@
-﻿namespace AwesomePokerGameSln {
+﻿using System;
+
+namespace AwesomePokerGameSln {
     partial class FrmPlaygame {
         /// <summary>
         /// Required designer variable.
@@ -304,6 +306,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+        private void dealerHandType_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void chatBox_SelectedIndexChanged(object sender, EventArgs e)
+        { 
 
         }
 
