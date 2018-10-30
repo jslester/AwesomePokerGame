@@ -218,15 +218,5 @@ namespace AwesomePokerGameSln {
             }
 
         }
-
-		private void dealerHandType_Click(object sender, EventArgs e)
-		{
-
-		}
-
-        private void chatBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
