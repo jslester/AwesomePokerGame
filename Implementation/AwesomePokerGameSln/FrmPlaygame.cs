@@ -65,11 +65,15 @@ namespace AwesomePokerGameSln {
             playerHT = playerHand.getHandType();
             dealerHT = dealerHand.getHandType();
 
+
             playerHandType.Text = playerHT.ToString();
             dealerHandType.Text = dealerHT.ToString();
 
             chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
             chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
+
+
+
 
             if ((int)playerHT < (int)dealerHT)
             {
@@ -83,11 +87,16 @@ namespace AwesomePokerGameSln {
             {
                 resultString = "It's a tie!";
             }
-            chatBox.Items.Add(resultString);
+            if(replaceCards.Enabled == false)
+                chatBox.Items.Add(resultString);
         }
 
         private void ReplaceSelectedCards(object sender, EventArgs e)
         {
+            // Disable buttons upon click
+            foldButton.Enabled = false;
+            replaceCards.Enabled = false;
+            
 
             if (selectedCards.Count == 0)
             {
@@ -138,8 +147,7 @@ namespace AwesomePokerGameSln {
             selectedCards = new List<PictureBox>();
             CheckHand();
 
-            foldButton.Enabled = false;
-            replaceCards.Enabled = false;
+            // Enable after all else is done
             redealButton.Enabled = true;
         }
 
@@ -152,7 +160,6 @@ namespace AwesomePokerGameSln {
         private void FrmPlaygame_Load(object sender, EventArgs e) {
             deck = new Deck();
             dealCards();
-            CheckHand();
             redealButton.Enabled = false;
         }
         //Need to add a way to disable clicking cards after new hand is dealt

@@ -20,7 +20,7 @@ namespace AwesomePokerGameSln.Code {
 
   public class Hand {
     private Tuple<int, int>[] cards;
-
+    private List<Tuple<int,int>> trashCards;
         public int GetLength()
         {
             return cards.Length;
@@ -32,13 +32,14 @@ namespace AwesomePokerGameSln.Code {
         }
 
     public Hand(Tuple<int, int>[] cards) {
-      this.cards = cards;
+        trashCards = new List<Tuple<int, int>>();
+        this.cards = cards;
     }
 
     public HandType getHandType() {
       HandType handType = HandType.HIGH;
-
-
+      // trash cards evaluated at the end since it is a default case
+      trashCards.Clear();
 
       int[] faces = cards.Select(card => card.Item1).ToArray();
       int uniqueCount = faces.Distinct().Count();
@@ -49,6 +50,7 @@ namespace AwesomePokerGameSln.Code {
             int[] suits = cards.Select(card => card.Item2).ToArray();
             if (suits.Distinct().Count() == 1) {
               handType = HandType.FLUSH;
+              // No cards to trash
             }
 
             // straight
@@ -67,14 +69,24 @@ namespace AwesomePokerGameSln.Code {
               else {
                 handType = HandType.STRAIGHT;
               }
+              // No cards to trash
             }
           }
           break;
 
         case 4:
-          // one pair
-          handType = HandType.ONE_PAIR;
-          break;
+            // one pair
+            handType = HandType.ONE_PAIR;
+            int ct;
+            foreach (Tuple<int,int> item in cards){
+                ct = cards.Count(card => card.Item1 == item.Item1);
+                if(ct == 1){
+                    trashCards.Add(item);
+                }  
+            }
+
+
+            break;
 
         case 3: {
             // two pair, three of a kind
@@ -96,6 +108,13 @@ namespace AwesomePokerGameSln.Code {
             else if (freq == 3) {
               handType = HandType.THREE;
             }
+            // Trash any single occurence cards
+            foreach (Tuple<int,int> item in cards){
+                ct = cards.Count(card => card.Item1 == item.Item1);
+                if(ct == 1){
+                    trashCards.Add(item);
+                }  
+            }
 
           }
           break;
@@ -111,7 +130,22 @@ namespace AwesomePokerGameSln.Code {
               handType = HandType.FOUR;
             }
           }
+          // No beneficial cards to trash (replacing a card in FOUR does nothing)
+
           break;
+
+      }
+
+      if(handType == HandType.HIGH){
+            int highCard = 0;
+            foreach(Tuple<int,int> item in cards){
+                if(item.Item1 > highCard)
+                        highCard = item.Item1;
+            }
+            foreach(Tuple<int,int> item in cards){
+                if(item.Item1 != highCard)
+                        trashCards.Add(item);
+            }
       }
 
       return handType;
