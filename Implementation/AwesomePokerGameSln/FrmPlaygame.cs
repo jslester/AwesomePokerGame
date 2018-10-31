@@ -89,6 +89,7 @@ namespace AwesomePokerGameSln {
             }
             if(replaceCards.Enabled == false)
                 chatBox.Items.Add(resultString);
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void ReplaceSelectedCards(object sender, EventArgs e)
@@ -204,7 +205,8 @@ namespace AwesomePokerGameSln {
 
 				selectedCards.Remove(picSender);
 			}
-            
+            chatBox.TopIndex = chatBox.Items.Count - 1;
+
         }
 
         private void foldButton_Click(object sender, EventArgs e)
