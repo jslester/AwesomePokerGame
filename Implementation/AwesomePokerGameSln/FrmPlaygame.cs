@@ -149,6 +149,7 @@ namespace AwesomePokerGameSln {
             Application.Exit();
         }
 
+
         private void FrmPlaygame_Load(object sender, EventArgs e) {
             deck = new Deck();
             dealCards();
@@ -219,6 +220,9 @@ namespace AwesomePokerGameSln {
             }
 
         }
+
+
+
 
         private void TypeBox_Enter(object sender, EventArgs e)
         {
