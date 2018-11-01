@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CardType = System.Tuple<int, int>;
+using CardType = System.Tuple<int, int>; 
 
 namespace AwesomePokerGameSln {
     public partial class FrmPlaygame : Form {
@@ -59,27 +59,27 @@ namespace AwesomePokerGameSln {
 
         private void CheckHand()
         {
-            HandType playerHT, dealerHT;
+            Tuple<HandType, float> playerHT, dealerHT;
             String resultString = "IM MAD WHY WASNT I SET";
 
             playerHT = playerHand.getHandType();
             dealerHT = dealerHand.getHandType();
 
 
-            playerHandType.Text = playerHT.ToString();
-            dealerHandType.Text = dealerHT.ToString();
+            playerHandType.Text = playerHT.Item1.ToString();
+            dealerHandType.Text = dealerHT.Item1.ToString();
 
-            chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
-            chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
-
-
+            chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
+            chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
 
 
-            if ((int)playerHT < (int)dealerHT)
+
+
+            if ((int)playerHT.Item2 > (int)dealerHT.Item2)
             {
                 resultString = "Player Wins!";
             }
-            else if ((int)playerHT > (int)dealerHT)
+            else if ((int)playerHT.Item2 < (int)dealerHT.Item2)
             {
                 resultString = "Dealer Wins!";
             }
