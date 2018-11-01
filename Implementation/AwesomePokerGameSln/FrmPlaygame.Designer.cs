@@ -207,7 +207,7 @@ namespace AwesomePokerGameSln {
             this.typeBox.TabIndex = 14;
             this.typeBox.Text = "Enter a message:";
             this.typeBox.Enter += new System.EventHandler(this.TypeBox_Enter);
-            this.typeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TypeBox_Press_Enter);
+            this.typeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TypeBox_Enter);
             this.typeBox.Leave += new System.EventHandler(this.TypeBox_Leave);
             // 
             // chatSendButton

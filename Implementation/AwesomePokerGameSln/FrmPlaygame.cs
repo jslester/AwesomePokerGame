@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Drawing;
 using CardType = System.Tuple<int, int>;
 
 namespace AwesomePokerGameSln {
@@ -197,7 +197,7 @@ namespace AwesomePokerGameSln {
             {
                 chatBox.Items.Add("Me: " + typeBox.Text);
             }
-           
+            typeBox.Text = "";
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
@@ -243,17 +243,7 @@ namespace AwesomePokerGameSln {
 
         }
 
-        private void listBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-
-            Graphics g = e.Graphics;
-            g.FillRectangle(new SolidBrush(Color.White), e.Bounds);
-            ListBox lb = (ListBox)sender;
-            g.DrawString(lb.Items[e.Index].ToString(), e.Font, new SolidBrush(Color.Red), new PointF(e.Bounds.X, e.Bounds.Y));
-
-            e.DrawFocusRectangle();
-        }
+       
 
 
         private void TypeBox_Enter(object sender, EventArgs e)
@@ -265,6 +255,7 @@ namespace AwesomePokerGameSln {
                 typeBox.ForeColor = Color.Black;
             }
         }
+
 
 
         private void TypeBox_Leave(object sender, EventArgs e)
