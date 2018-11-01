@@ -1,4 +1,5 @@
 ﻿using AwesomePokerGameSln.Code;
+using AwesomePokerGameSln;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using CardType = System.Tuple<int, int>;
 
 namespace AwesomePokerGameSln {
@@ -173,9 +175,29 @@ namespace AwesomePokerGameSln {
 
         private void chatSendButton_Click(object sender, EventArgs e)
         {
-            chatBox.Items.Add("Me: " + typeBox.Text);
-            typeBox.Text = "Enter a message:";
-            typeBox.ForeColor = Color.Gray;
+
+            //string example = "blackListWords.txt";
+            //char[] delimiterChars = { '\n '\r'};
+            string textFile = Properties.Resources.blacklistWords;
+            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+            bool containsValue = false;
+            foreach(string swearWord in swearWordList)
+            {
+                if (typeBox.Text.Contains(swearWord))
+                {
+                    containsValue = true;
+                }
+            }
+            if (containsValue)
+            {
+                chatBox.Items.Add("Your message was not sent! Please refrain from swearing!");
+            }
+            else
+            {
+                chatBox.Items.Add("Me: " + typeBox.Text);
+            }
+           
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
@@ -221,7 +243,17 @@ namespace AwesomePokerGameSln {
 
         }
 
+        private void listBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
 
+            Graphics g = e.Graphics;
+            g.FillRectangle(new SolidBrush(Color.White), e.Bounds);
+            ListBox lb = (ListBox)sender;
+            g.DrawString(lb.Items[e.Index].ToString(), e.Font, new SolidBrush(Color.Red), new PointF(e.Bounds.X, e.Bounds.Y));
+
+            e.DrawFocusRectangle();
+        }
 
 
         private void TypeBox_Enter(object sender, EventArgs e)
@@ -234,16 +266,6 @@ namespace AwesomePokerGameSln {
             }
         }
 
-        private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                chatBox.Items.Add("Me: " + typeBox.Text);
-                e.SuppressKeyPress = true;
-                typeBox.Text = "";
-                chatBox.TopIndex = chatBox.Items.Count - 1;
-            }
-        }
 
         private void TypeBox_Leave(object sender, EventArgs e)
         {
