@@ -300,5 +300,9 @@
   <ItemGroup>
     <None Include="Resources\Deck.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\blacklistWords.txt" />
+    <None Include="Resources\blacklistWords.txt.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
