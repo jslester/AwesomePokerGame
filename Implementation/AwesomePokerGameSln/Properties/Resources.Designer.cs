@@ -149,7 +149,12 @@ namespace AwesomePokerGameSln.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
+        internal static string[] getObject(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -477,6 +482,73 @@ namespace AwesomePokerGameSln.Properties {
             get {
                 object obj = ResourceManager.GetObject("black_joker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to anal
+        ///anus
+        ///arse
+        ///ass
+        ///ass fuck
+        ///ass hole
+        ///assfucker
+        ///asshole
+        ///assshole
+        ///bastard
+        ///bitch
+        ///black cock
+        ///bloody hell
+        ///boong
+        ///cock
+        ///cockfucker
+        ///cocksuck
+        ///cocksucker
+        ///coon
+        ///coonnass
+        ///crap
+        ///cunt
+        ///cyberfuck
+        ///damn
+        ///darn
+        ///dick
+        ///dirty
+        ///douche
+        ///dummy
+        ///erect
+        ///erection
+        ///erotic
+        ///escort
+        ///fag
+        ///faggot
+        ///fuck
+        ///Fuck off
+        ///fuck you
+        ///fuckass
+        ///fuckhole
+        ///god damn
+        ///gook
+        ///hard core
+        ///hardcore
+        ///homoerotic
+        ///hore
+        ///lesbian
+        ///lesbians
+        ///mother fucker
+        ///motherfuck
+        ///motherfucker
+        ///negro
+        ///nigger
+        ///orgasim
+        ///orgasm
+        ///penis
+        ///penisfucker
+        ///piss
+        ///piss off [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string blacklistWords {
+            get {
+                return ResourceManager.GetString("blacklistWords", resourceCulture);
             }
         }
         
