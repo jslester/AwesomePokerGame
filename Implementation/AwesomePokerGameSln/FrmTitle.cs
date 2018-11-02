@@ -24,9 +24,17 @@ namespace AwesomePokerGameSln {
     }
 
     private void btnNewGame_Click(object sender, EventArgs e) {
-      FrmPlaygame frmPlaygame = new FrmPlaygame();
-      frmPlaygame.Show();
-      Hide();
+      if (comboBox1.Text == "General Poker")
+      {
+                FrmPlaygame frmPlaygame = new FrmPlaygame();
+                frmPlaygame.Show();
+                Hide();
+            }
+      //else {
+                //BlackjackGame blackjack = new BlackjackGame();
+                //blackjack.Show();
+                //Hide();
+      //}
     }
   }
 }
