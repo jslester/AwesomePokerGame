@@ -87,7 +87,33 @@ namespace AwesomePokerGameSln {
             }
             chatBox.Items.Add(resultString);
         }
+        private void addtoChat()
+        {
+            string textFile = Properties.Resources.blacklistWords;
+            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
+            bool containsValue = false;
+            foreach (string swearWord in swearWordList)
+            {
+                string test = typeBox.Text;
+                
+                if (test.IndexOf(swearWord, 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                {
+                    containsValue = true;
+                }
+            }
+            if (containsValue)
+            {
+                chatBox.Items.Add("Your message was not sent! Please refrain from swearing!");
+            }
+            else
+            {
+                chatBox.Items.Add("Me: " + typeBox.Text);
+            }
+            typeBox.Text = "";
+            chatBox.TopIndex = chatBox.Items.Count - 1;
+
+        }
         private void ReplaceSelectedCards(object sender, EventArgs e)
         {
 
@@ -178,27 +204,7 @@ namespace AwesomePokerGameSln {
 
             //string example = "blackListWords.txt";
             //char[] delimiterChars = { '\n '\r'};
-            string textFile = Properties.Resources.blacklistWords;
-            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-
-            bool containsValue = false;
-            foreach(string swearWord in swearWordList)
-            {
-                if (typeBox.Text.Contains(swearWord))
-                {
-                    containsValue = true;
-                }
-            }
-            if (containsValue)
-            {
-                chatBox.Items.Add("Your message was not sent! Please refrain from swearing!");
-            }
-            else
-            {
-                chatBox.Items.Add("Me: " + typeBox.Text);
-            }
-            typeBox.Text = "";
-            chatBox.TopIndex = chatBox.Items.Count - 1;
+            addtoChat();
         }
 
         private void cardClickHandler(object sender, EventArgs e)
@@ -242,8 +248,17 @@ namespace AwesomePokerGameSln {
             }
 
         }
+        private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                addtoChat();
+                e.SuppressKeyPress = true;
+                
+            }
+        }
 
-       
+
 
 
         private void TypeBox_Enter(object sender, EventArgs e)
