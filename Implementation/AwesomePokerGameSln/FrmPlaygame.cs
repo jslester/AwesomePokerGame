@@ -213,6 +213,8 @@ namespace AwesomePokerGameSln {
             //string example = "blackListWords.txt";
             //char[] delimiterChars = { '\n '\r'};
             addtoChat();
+            typeBox.Text = "Enter a message:";
+            typeBox.ForeColor = Color.Gray;
         }
 
         private void cardClickHandler(object sender, EventArgs e)
