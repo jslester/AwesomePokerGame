@@ -9,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using CardType = System.Tuple<int, int>;
 
-namespace AwesomePokerGameSln {
-    public partial class FrmPlaygame : Form {
+namespace AwesomePokerGameSln
+{
+    public partial class FrmPlaygame : Form
+    {
         private Deck deck;
         private PictureBox[] playerCardPics;
         private PictureBox[] dealerCardPics;
@@ -24,64 +25,67 @@ namespace AwesomePokerGameSln {
         public FrmPlaygame() {
             InitializeComponent();
             playerCardPics = new PictureBox[5];
-            for (int c = 1; c <= 5; c++) {
+            for (int c = 1; c <= 5; c++)
+            {
                 playerCardPics[c - 1] = this.Controls.Find("picCard" + c.ToString(), true)[0] as PictureBox;
             }
             dealerCardPics = new PictureBox[5];
-            for (int c = 1; c <= 5; c++) {
+            for (int c = 1; c <= 5; c++)
+            {
                 dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
             }
         }
 
-        private void dealCards() {
+        private void DealCards()
+        {
             replaceCards.Enabled = true;
-            deck.shuffleDeck();
-            Tuple<int, int>[] cards = new Tuple<int, int>[5];
+            deck.ShuffleDeck();
+            CardType[] cards;
+
+            cards = new CardType[5];
             int index = 0;
-            foreach (PictureBox playerCardPic in playerCardPics) {
-                CardType card = deck.nextCard();
+            foreach (PictureBox playerCardPic in playerCardPics)
+            {
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
             }
             playerHand = new Hand(cards);
+
             cards = new CardType[5];
             index = 0;
-            foreach (PictureBox dealerCardPic in dealerCardPics) {
-                CardType card = deck.nextCard();
+            foreach (PictureBox dealerCardPic in dealerCardPics)
+            {
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
             }
             dealerHand = new Hand(cards);
-            CheckHand();
 
-            
+            CheckHand();
         }
 
         private void CheckHand()
         {
-            HandType playerHT, dealerHT;
+            Tuple<HandType, double> playerHT, dealerHT;
             String resultString = "IM MAD WHY WASNT I SET";
 
             playerHT = playerHand.getHandType();
             dealerHT = dealerHand.getHandType();
 
+            playerHandType.Text = playerHT.Item1.ToString();
+            dealerHandType.Text = dealerHT.Item1.ToString();
 
-            playerHandType.Text = playerHT.ToString();
-            dealerHandType.Text = dealerHT.ToString();
+            chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
+            chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
 
-            chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
-            chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
-
-
-
-
-            if ((int)playerHT < (int)dealerHT)
+            if (playerHT.Item2 > dealerHT.Item2)
             {
                 resultString = "Player Wins!";
             }
-            else if ((int)playerHT > (int)dealerHT)
+            else if (playerHT.Item2 < dealerHT.Item2)
             {
                 resultString = "Dealer Wins!";
             }
@@ -89,26 +93,95 @@ namespace AwesomePokerGameSln {
             {
                 resultString = "It's a tie!";
             }
+
             if(replaceCards.Enabled == false)
                 chatBox.Items.Add(resultString);
+
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
-        private void addtoChat()
-        {
-            string textFile = Properties.Resources.blacklistWords;
-            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            bool containsValue = false;
-            foreach (string swearWord in swearWordList)
+        private void ReplaceSelectedCards(object sender, EventArgs e)
+        {
+            // Disable buttons upon click
+            foldButton.Enabled = false;
+            replaceCards.Enabled = false;
+            redealButton.Enabled = true;
+            
+            if (selectedCards.Count == 0) // Nothing selected, just return
             {
-                string test = typeBox.Text;
-                
-                if (test.IndexOf(swearWord, 0, StringComparison.CurrentCultureIgnoreCase) != -1)
-                {
-                    containsValue = true;
-                }
+                return;
             }
-            if (containsValue)
+
+            CardType[] cards = new CardType[5];
+
+            int i = 0;
+            foreach (PictureBox playerCardPic in playerCardPics) // Loop through players cards
+            {
+                if (selectedCards.Contains(playerCardPic)) // If the players card is selected, replace it with a new card and fix its placement
+                {
+                    CardType card = deck.NextCard();
+                    //CardType card = new CardType(index, inde);
+                    cards[i] = card;
+                    playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+
+                    playerCardPic.Location = new Point(playerCardPic.Location.X, playerCardPic.Location.Y + 10);
+                }
+                else // Otherwise just pass the card on
+                {
+                    cards[i] = playerHand.GetCardI(i);
+                }
+                i++;
+            }
+            playerHand = new Hand(cards); // Give the player their new hand
+            
+            selectedCards = new List<PictureBox>(); // Clear selectedCards
+            CheckHand();
+
+            // Enable after all else is done
+            redealButton.Enabled = true;
+        }
+
+        private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //foreach (Form f in Application.OpenForms)
+            //  f.Close();
+            Application.Exit();
+        }
+
+
+        private void FrmPlaygame_Load(object sender, EventArgs e)
+        {
+            deck = new Deck();
+            DealCards();
+            redealButton.Enabled = false;
+        }
+        //Need to add a way to disable clicking cards after new hand is dealt
+        //Need to figure out if can stop from pressing more than once. Maybe change/ check the y value?
+
+        private void redealButton_Click(object sender, EventArgs e)
+        {
+            chatBox.Items.Add("Dealer: GoodLuck!");
+            redealButton.Enabled = false;
+            replaceCards.Enabled = true;
+            foldButton.Enabled = true;
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                singlebox.Enabled = true;
+
+            }
+            DealCards();
+        }
+
+        private void chatSendButton_Click(object sender, EventArgs e)
+        {
+            AddtoChat();
+            typeBox.Text = "Enter a message:";
+            typeBox.ForeColor = Color.Gray;
+        }
+
+        private void AddtoChat()
+        {
+            if (VulgarityCheck())
             {
                 chatBox.Items.Add("Your message was not sent! Please refrain from swearing!");
             }
@@ -120,104 +193,25 @@ namespace AwesomePokerGameSln {
             chatBox.TopIndex = chatBox.Items.Count - 1;
 
         }
-        private void ReplaceSelectedCards(object sender, EventArgs e)
+
+        private bool VulgarityCheck()
         {
-            // Disable buttons upon click
-            foldButton.Enabled = false;
-            replaceCards.Enabled = false;
-            
+            string textFile = Properties.Resources.blacklistWords;
+            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            if (selectedCards.Count == 0)
+            foreach (string swearWord in swearWordList)
             {
-                return;
-            }
-            int i;
-            List<int> indexes = new List<int>();
-            CardType[] cards = new CardType[5];
-            foreach (PictureBox cardToReplace in selectedCards)
-            {
-                i = 0;
-                foreach (PictureBox myCard in playerCardPics)
+                string test = typeBox.Text;
+
+                if (test.IndexOf(swearWord, 0, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
-                    if (cardToReplace.Name.Equals(myCard.Name))
-                    {
-                        indexes.Add(i);
-                    }
-                    i++;
+                    return true;
                 }
             }
-            i = 0;
-            foreach (PictureBox playerCardPic in playerCardPics)
-            {
-                if (indexes.Contains(i))
-                {
-                    CardType card = deck.nextCard();
-                    //CardType card = new CardType(index, inde);
-                    cards[i] = card;
-                    playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
-                }
-                else
-                {
-                    cards[i] = playerHand.GetCardI(i);
-                }
-                i++;
-            }
-            playerHand = new Hand(cards);
-            
-            foreach (PictureBox singlebox in playerCardPics)
-            {
-                if (selectedCards.Contains(singlebox))
-                {
-                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
-                }
-                singlebox.Enabled = false;
-
-            }
-            selectedCards = new List<PictureBox>();
-            CheckHand();
-
-            // Enable after all else is done
-            redealButton.Enabled = true;
+            return false;
         }
 
-        private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
-            //foreach (Form f in Application.OpenForms)
-            //  f.Close();
-            Application.Exit();
-        }
-
-
-        private void FrmPlaygame_Load(object sender, EventArgs e) {
-            deck = new Deck();
-            dealCards();
-            redealButton.Enabled = false;
-        }
-        //Need to add a way to disable clicking cards after new hand is dealt
-        //Need to figure out if can stop from pressing more than once. Maybe change/ check the y value?
-
-        private void redealButton_Click(object sender, EventArgs e) {
-            chatBox.Items.Add("Dealer: GoodLuck!");
-            redealButton.Enabled = false;
-            foldButton.Enabled = true;
-            foreach (PictureBox singlebox in playerCardPics)
-            {
-                singlebox.Enabled = true;
-
-            }
-            dealCards();
-        }
-
-        private void chatSendButton_Click(object sender, EventArgs e)
-        {
-
-            //string example = "blackListWords.txt";
-            //char[] delimiterChars = { '\n '\r'};
-            addtoChat();
-            typeBox.Text = "Enter a message:";
-            typeBox.ForeColor = Color.Gray;
-        }
-
-        private void cardClickHandler(object sender, EventArgs e)
+        private void CardClickHandler(object sender, EventArgs e)
         {
             PictureBox picSender = (PictureBox)sender;
 			if (!selectedCards.Contains(picSender))
@@ -262,7 +256,7 @@ namespace AwesomePokerGameSln {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                addtoChat();
+                AddtoChat();
                 e.SuppressKeyPress = true;
                 
             }
