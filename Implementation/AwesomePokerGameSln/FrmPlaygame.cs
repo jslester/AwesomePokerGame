@@ -109,6 +109,7 @@ namespace AwesomePokerGameSln
             
             if (selectedCards.Count == 0) // Nothing selected, just return
             {
+                CheckHand();
                 return;
             }
 
@@ -213,24 +214,27 @@ namespace AwesomePokerGameSln
 
         private void CardClickHandler(object sender, EventArgs e)
         {
-            PictureBox picSender = (PictureBox)sender;
-			if (!selectedCards.Contains(picSender))
-			{
-				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
+            if(replaceCards.Enabled)
+            {
+                PictureBox picSender = (PictureBox)sender;
+			    if (!selectedCards.Contains(picSender))
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
 
-				chatBox.Items.Add(picSender.Name + " Selected");
+				    chatBox.Items.Add(picSender.Name + " Selected");
 
-				selectedCards.Add(picSender);
-			}
-			else
-			{
-				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
+				    selectedCards.Add(picSender);
+			    }
+			    else
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
 
-				chatBox.Items.Add(picSender.Name + " Unselected");
+				    chatBox.Items.Add(picSender.Name + " Unselected");
 
-				selectedCards.Remove(picSender);
-			}
-            chatBox.TopIndex = chatBox.Items.Count - 1;
+				    selectedCards.Remove(picSender);
+			    }
+                chatBox.TopIndex = chatBox.Items.Count - 1;
+            }
         }
 
         private void foldButton_Click(object sender, EventArgs e)
@@ -250,7 +254,7 @@ namespace AwesomePokerGameSln
 				selectedCards.Remove(singlebox);
 
             }
-
+            CheckHand();
         }
         private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
         {
