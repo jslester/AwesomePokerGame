@@ -22,7 +22,8 @@ namespace AwesomePokerGameSln
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
 
-        public FrmPlaygame() {
+        public FrmPlaygame()
+        {
             InitializeComponent();
             playerCardPics = new PictureBox[5];
             for (int c = 1; c <= 5; c++)
@@ -113,7 +114,6 @@ namespace AwesomePokerGameSln
             foreach (PictureBox singlebox in playerCardPics)
             {
                 singlebox.Enabled = true;
-
             }
             DealCards();
         }
@@ -231,6 +231,7 @@ namespace AwesomePokerGameSln
 				selectedCards.Remove(singlebox);
             }
             chatBox.Items.Add("Player Folds, Dealer Wins!");
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         ///////////////////////////
