@@ -9,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using CardType = System.Tuple<int, int>;
 
-namespace AwesomePokerGameSln {
-    public partial class FrmPlaygame : Form {
+namespace AwesomePokerGameSln
+{
+    public partial class FrmPlaygame : Form
+    {
         private Deck deck;
         private PictureBox[] playerCardPics;
         private PictureBox[] dealerCardPics;
@@ -21,94 +22,182 @@ namespace AwesomePokerGameSln {
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
 
-        public FrmPlaygame() {
+        public FrmPlaygame()
+        {
             InitializeComponent();
             playerCardPics = new PictureBox[5];
-            for (int c = 1; c <= 5; c++) {
+            for (int c = 1; c <= 5; c++)
+            {
                 playerCardPics[c - 1] = this.Controls.Find("picCard" + c.ToString(), true)[0] as PictureBox;
             }
             dealerCardPics = new PictureBox[5];
-            for (int c = 1; c <= 5; c++) {
+            for (int c = 1; c <= 5; c++)
+            {
                 dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
             }
+            
         }
 
-        private void dealCards() {
+        private void DealCards()
+        {
             replaceCards.Enabled = true;
-            deck.shuffleDeck();
-            Tuple<int, int>[] cards = new Tuple<int, int>[5];
+            deck.ShuffleDeck();
+            CardType[] cards;
+
+            cards = new CardType[5];
             int index = 0;
-            foreach (PictureBox playerCardPic in playerCardPics) {
-                CardType card = deck.nextCard();
+            foreach (PictureBox playerCardPic in playerCardPics)
+            {
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
             }
             playerHand = new Hand(cards);
+
             cards = new CardType[5];
             index = 0;
-            foreach (PictureBox dealerCardPic in dealerCardPics) {
-                CardType card = deck.nextCard();
+            foreach (PictureBox dealerCardPic in dealerCardPics)
+            {
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
             }
             dealerHand = new Hand(cards);
-            CheckHand();
 
-            
+            CheckHand();
         }
 
         private void CheckHand()
         {
-            HandType playerHT, dealerHT;
+            Tuple<HandType, double> playerHT, dealerHT;
             String resultString = "IM MAD WHY WASNT I SET";
-
-            playerHT = playerHand.getHandType();
+            
             dealerHT = dealerHand.getHandType();
+            playerHT = playerHand.getHandType();
+            playerHandType.Text = playerHT.Item1.ToString();
+            dealerHandType.Text = dealerHT.Item1.ToString();
+            
+                chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
+                chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
+
+                if (playerHT.Item2 > dealerHT.Item2)
+                {
+                    resultString = "Player Wins!";
+                }
+                else if (playerHT.Item2 < dealerHT.Item2)
+                {
+                    resultString = "Dealer Wins!";
+                }
+                else
+                {
+                    resultString = "It's a tie!";
+                }
 
 
-            playerHandType.Text = playerHT.ToString();
-            dealerHandType.Text = dealerHT.ToString();
-
-            chatBox.Items.Add("Player: " + (int)playerHT + "(" + playerHandType.Text + ")");
-            chatBox.Items.Add("Dealer: " + (int)dealerHT + "(" + dealerHandType.Text + ")");
-
-
-
-
-            if ((int)playerHT < (int)dealerHT)
-            {
-                resultString = "Player Wins!";
-            }
-            else if ((int)playerHT > (int)dealerHT)
-            {
-                resultString = "Dealer Wins!";
-            }
-            else
-            {
-                resultString = "It's a tie!";
-            }
             if(replaceCards.Enabled == false)
                 chatBox.Items.Add(resultString);
+
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
-        private void addtoChat()
-        {
-            string textFile = Properties.Resources.blacklistWords;
-            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            bool containsValue = false;
-            foreach (string swearWord in swearWordList)
+        // Start a new game, reset all vals
+        private void redealButton_Click(object sender, EventArgs e)
+        {
+            chatBox.Items.Add("Dealer: GoodLuck!");
+            redealButton.Enabled = false;
+            replaceCards.Enabled = true;
+            foldButton.Enabled = true;
+            foreach (PictureBox singlebox in playerCardPics)
             {
-                string test = typeBox.Text;
-                
-                if (test.IndexOf(swearWord, 0, StringComparison.CurrentCultureIgnoreCase) != -1)
-                {
-                    containsValue = true;
-                }
+                singlebox.Enabled = true;
             }
-            if (containsValue)
+            DealCards();
+        }
+
+        // Stage 2 of the game, player and dealer trade in cards and recheck their hands
+        private void ReplaceSelectedCards(object sender, EventArgs e)
+        {
+            // Disable buttons upon click
+            // Deliberately excluding Redeal button until end of function for security
+            foldButton.Enabled = false;
+            replaceCards.Enabled = false;
+                        
+
+            // Dealer acts, replaces "trash cards"
+            CardType[] dcards = new CardType[5];
+            List<CardType> trash = dealerHand.GetTrash();
+            for(int k=0; k <5; k++)
+            {
+                if (trash.Contains(dealerHand.GetCardI(k)))
+                {
+                    CardType newCard = deck.NextCard();
+                    dcards[k] = newCard;
+                    dealerCardPics[k].BackgroundImage = CardImageHelper.cardToBitmap(newCard);
+                }
+                else
+                {
+                    dcards[k] = dealerHand.GetCardI(k);
+                }
+
+            }
+            dealerHand = new Hand(dcards); // Give the player their new hand
+            // Dealer's selected cards are changed out
+
+            // Player acts, replaces selected cards
+            if (selectedCards.Count == 0) // Nothing selected, just return
+            {
+                CheckHand();
+                // Enable after all else is done
+                redealButton.Enabled = true;
+                return;
+            }
+
+            CardType[] pcards = new CardType[5];
+            int i = 0;
+            foreach (PictureBox playerCardPic in playerCardPics) // Loop through players cards
+            {
+                if (selectedCards.Contains(playerCardPic)) // If the players card is selected, replace it with a new card and fix its placement
+                {
+                    CardType card = deck.NextCard();
+                    //CardType card = new CardType(index, inde);
+                    pcards[i] = card;
+                    playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+
+                    playerCardPic.Location = new Point(playerCardPic.Location.X, playerCardPic.Location.Y + 10);
+                }
+                else // Otherwise just pass the card on
+                {
+                    pcards[i] = playerHand.GetCardI(i);
+                }
+                i++;
+            }
+            playerHand = new Hand(pcards); // Give the player their new hand
+            
+            selectedCards = new List<PictureBox>(); // Clear selectedCards
+            CheckHand();
+
+            // Enable after all else is done
+            redealButton.Enabled = true;
+            playerHand.getHandType();
+            dealerHand.getHandType();
+        }
+
+
+        ///////////////////////////
+        // Chatbox Segment
+        ///////////////////////////
+        private void chatSendButton_Click(object sender, EventArgs e)
+        {
+            AddtoChat();
+            typeBox.Text = "Enter a message:";
+            typeBox.ForeColor = Color.Gray;
+        }
+
+        private void AddtoChat()
+        {
+            if (VulgarityCheck())
             {
                 chatBox.Items.Add("Your message was not sent! Please refrain from swearing!");
             }
@@ -120,132 +209,59 @@ namespace AwesomePokerGameSln {
             chatBox.TopIndex = chatBox.Items.Count - 1;
 
         }
-        private void ReplaceSelectedCards(object sender, EventArgs e)
+
+        private bool VulgarityCheck()
         {
-            // Disable buttons upon click
-            foldButton.Enabled = false;
-            replaceCards.Enabled = false;
-            
+            string textFile = Properties.Resources.blacklistWords;
+            string[] swearWordList = textFile.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
-            if (selectedCards.Count == 0)
+            foreach (string swearWord in swearWordList)
             {
-                return;
-            }
-            int i;
-            List<int> indexes = new List<int>();
-            CardType[] cards = new CardType[5];
-            foreach (PictureBox cardToReplace in selectedCards)
-            {
-                i = 0;
-                foreach (PictureBox myCard in playerCardPics)
+                string test = typeBox.Text;
+
+                if (test.IndexOf(swearWord, 0, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
-                    if (cardToReplace.Name.Equals(myCard.Name))
-                    {
-                        indexes.Add(i);
-                    }
-                    i++;
+                    return true;
                 }
             }
-            i = 0;
-            foreach (PictureBox playerCardPic in playerCardPics)
-            {
-                if (indexes.Contains(i))
-                {
-                    CardType card = deck.nextCard();
-                    //CardType card = new CardType(index, inde);
-                    cards[i] = card;
-                    playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
-                }
-                else
-                {
-                    cards[i] = playerHand.GetCardI(i);
-                }
-                i++;
-            }
-            playerHand = new Hand(cards);
-            
-            foreach (PictureBox singlebox in playerCardPics)
-            {
-                if (selectedCards.Contains(singlebox))
-                {
-                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
-                }
-                singlebox.Enabled = false;
-
-            }
-            selectedCards = new List<PictureBox>();
-            CheckHand();
-
-            // Enable after all else is done
-            redealButton.Enabled = true;
+            return false;
         }
 
-        private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
-            //foreach (Form f in Application.OpenForms)
-            //  f.Close();
-            Application.Exit();
-        }
-
-
-        private void FrmPlaygame_Load(object sender, EventArgs e) {
-            deck = new Deck();
-            dealCards();
-            redealButton.Enabled = false;
-        }
-        //Need to add a way to disable clicking cards after new hand is dealt
-        //Need to figure out if can stop from pressing more than once. Maybe change/ check the y value?
-
-        private void redealButton_Click(object sender, EventArgs e) {
-            chatBox.Items.Add("Dealer: GoodLuck!");
-            redealButton.Enabled = false;
-            foldButton.Enabled = true;
-            foreach (PictureBox singlebox in playerCardPics)
-            {
-                singlebox.Enabled = true;
-
-            }
-            dealCards();
-        }
-
-        private void chatSendButton_Click(object sender, EventArgs e)
+        // "Selecting" a card to replace
+        private void CardClickHandler(object sender, EventArgs e)
         {
+            if(replaceCards.Enabled)
+            {
+                PictureBox picSender = (PictureBox)sender;
+			    if (!selectedCards.Contains(picSender))
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
 
-            //string example = "blackListWords.txt";
-            //char[] delimiterChars = { '\n '\r'};
-            addtoChat();
-            typeBox.Text = "Enter a message:";
-            typeBox.ForeColor = Color.Gray;
+				    chatBox.Items.Add(picSender.Name + " Selected");
+
+				    selectedCards.Add(picSender);
+			    }
+			    else
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
+
+				    chatBox.Items.Add(picSender.Name + " Unselected");
+
+				    selectedCards.Remove(picSender);
+			    }
+                chatBox.TopIndex = chatBox.Items.Count - 1;
+            }
         }
 
-        private void cardClickHandler(object sender, EventArgs e)
-        {
-            PictureBox picSender = (PictureBox)sender;
-			if (!selectedCards.Contains(picSender))
-			{
-				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
-
-				chatBox.Items.Add(picSender.Name + " Selected");
-
-				selectedCards.Add(picSender);
-			}
-			else
-			{
-				picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
-
-				chatBox.Items.Add(picSender.Name + " Unselected");
-
-				selectedCards.Remove(picSender);
-			}
-            chatBox.TopIndex = chatBox.Items.Count - 1;
-        }
-
+        // Fold your hand, dealer automatically wins
         private void foldButton_Click(object sender, EventArgs e)
         {
             foldButton.Enabled = false;
             replaceCards.Enabled = false;
             redealButton.Enabled = true;
 
-			foreach (PictureBox singlebox in playerCardPics)
+            // Disable and reset selecting cards
+            foreach (PictureBox singlebox in playerCardPics)
             {
                 if (selectedCards.Contains(singlebox))
                 {
@@ -253,24 +269,21 @@ namespace AwesomePokerGameSln {
                 }
                 singlebox.Enabled = false;
 
-				selectedCards.Remove(singlebox);
-
+                selectedCards.Remove(singlebox);
             }
-
+            chatBox.Items.Add("Player Folds, Dealer Wins!");
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
+
         private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                addtoChat();
+                AddtoChat();
                 e.SuppressKeyPress = true;
-                
             }
         }
-
-
-
-
+        
         private void TypeBox_Enter(object sender, EventArgs e)
         {
             if (typeBox.Text == "Enter a message:")
@@ -290,6 +303,24 @@ namespace AwesomePokerGameSln {
                 typeBox.Text = "Enter a message:";
                 typeBox.ForeColor = Color.Gray;
             }
+        }
+
+
+        ////////////////////
+        // Backend Handlers
+        ////////////////////
+        private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //foreach (Form f in Application.OpenForms)
+            //  f.Close();
+            Application.Exit();
+        }
+
+        private void FrmPlaygame_Load(object sender, EventArgs e)
+        {
+            deck = new Deck();
+            DealCards();
+            redealButton.Enabled = false;
         }
     }
 }

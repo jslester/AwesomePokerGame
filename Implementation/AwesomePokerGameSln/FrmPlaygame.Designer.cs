@@ -67,7 +67,7 @@ namespace AwesomePokerGameSln {
             this.picCard1.Size = new System.Drawing.Size(150, 231);
             this.picCard1.TabIndex = 0;
             this.picCard1.TabStop = false;
-            this.picCard1.Click += new System.EventHandler(this.cardClickHandler);
+            this.picCard1.Click += new System.EventHandler(this.CardClickHandler);
             // 
             // picCard3
             // 
@@ -78,7 +78,7 @@ namespace AwesomePokerGameSln {
             this.picCard3.Size = new System.Drawing.Size(150, 231);
             this.picCard3.TabIndex = 1;
             this.picCard3.TabStop = false;
-            this.picCard3.Click += new System.EventHandler(this.cardClickHandler);
+            this.picCard3.Click += new System.EventHandler(this.CardClickHandler);
             // 
             // picCard4
             // 
@@ -89,7 +89,7 @@ namespace AwesomePokerGameSln {
             this.picCard4.Size = new System.Drawing.Size(150, 231);
             this.picCard4.TabIndex = 2;
             this.picCard4.TabStop = false;
-            this.picCard4.Click += new System.EventHandler(this.cardClickHandler);
+            this.picCard4.Click += new System.EventHandler(this.CardClickHandler);
             // 
             // picCard5
             // 
@@ -100,7 +100,7 @@ namespace AwesomePokerGameSln {
             this.picCard5.Size = new System.Drawing.Size(150, 231);
             this.picCard5.TabIndex = 3;
             this.picCard5.TabStop = false;
-            this.picCard5.Click += new System.EventHandler(this.cardClickHandler);
+            this.picCard5.Click += new System.EventHandler(this.CardClickHandler);
             // 
             // picCard2
             // 
@@ -111,7 +111,7 @@ namespace AwesomePokerGameSln {
             this.picCard2.Size = new System.Drawing.Size(150, 231);
             this.picCard2.TabIndex = 4;
             this.picCard2.TabStop = false;
-            this.picCard2.Click += new System.EventHandler(this.cardClickHandler);
+            this.picCard2.Click += new System.EventHandler(this.CardClickHandler);
             // 
             // redealButton
             // 
