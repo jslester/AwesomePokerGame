@@ -204,7 +204,7 @@ namespace AwesomePokerGameSln.Code
 
             foreach (KeyValuePair<int, int> entry in cardCounter)
             {
-                holder[entry.Value].Add(entry.Key);
+                holder[entry.Value-1].Add(entry.Key);
             }
             
             foreach (List<int> nums in holder)
@@ -216,11 +216,11 @@ namespace AwesomePokerGameSln.Code
 
             foreach (List<int> valueList in holder)
             {
-                foreach (int cardNumber in valueList)
-                {
+                 foreach (int cardNumber in valueList)
+                 {
                     decoratorValue += cardNumber / Math.Pow(10, powNum);
                     powNum += 2;
-                }
+                 }
             }
 
             return decoratorValue;

@@ -22,7 +22,8 @@ namespace AwesomePokerGameSln
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
 
-        public FrmPlaygame() {
+        public FrmPlaygame()
+        {
             InitializeComponent();
             playerCardPics = new PictureBox[5];
             for (int c = 1; c <= 5; c++)
@@ -101,8 +102,6 @@ namespace AwesomePokerGameSln
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
-        
-
         // Start a new game, reset all vals
         private void redealButton_Click(object sender, EventArgs e)
         {
@@ -113,35 +112,8 @@ namespace AwesomePokerGameSln
             foreach (PictureBox singlebox in playerCardPics)
             {
                 singlebox.Enabled = true;
-
             }
             DealCards();
-        }
-
-        // "Selecting" a card to replace
-        private void CardClickHandler(object sender, EventArgs e)
-        {
-            if(replaceCards.Enabled)
-            {
-                PictureBox picSender = (PictureBox)sender;
-			    if (!selectedCards.Contains(picSender))
-			    {
-				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
-
-				    chatBox.Items.Add(picSender.Name + " Selected");
-
-				    selectedCards.Add(picSender);
-			    }
-			    else
-			    {
-				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
-
-				    chatBox.Items.Add(picSender.Name + " Unselected");
-
-				    selectedCards.Remove(picSender);
-			    }
-                chatBox.TopIndex = chatBox.Items.Count - 1;
-            }
         }
 
         // Stage 2 of the game, player and dealer trade in cards and recheck their hands
@@ -212,26 +184,6 @@ namespace AwesomePokerGameSln
             dealerHand.getHandType();
         }
 
-        // Fold your hand, dealer automatically wins
-        private void foldButton_Click(object sender, EventArgs e)
-        {
-            foldButton.Enabled = false;
-            replaceCards.Enabled = false;
-            redealButton.Enabled = true;
-
-            // Disable and reset selecting cards
-			foreach (PictureBox singlebox in playerCardPics)
-            {
-                if (selectedCards.Contains(singlebox))
-                {
-                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
-                }
-                singlebox.Enabled = false;
-
-				selectedCards.Remove(singlebox);
-            }
-            chatBox.Items.Add("Player Folds, Dealer Wins!");
-        }
 
         ///////////////////////////
         // Chatbox Segment
@@ -275,7 +227,54 @@ namespace AwesomePokerGameSln
             return false;
         }
 
-        //Typebox Actions
+        // "Selecting" a card to replace
+        private void CardClickHandler(object sender, EventArgs e)
+        {
+            if(replaceCards.Enabled)
+            {
+                PictureBox picSender = (PictureBox)sender;
+			    if (!selectedCards.Contains(picSender))
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y - 10);
+
+				    chatBox.Items.Add(picSender.Name + " Selected");
+
+				    selectedCards.Add(picSender);
+			    }
+			    else
+			    {
+				    picSender.Location = new Point(picSender.Location.X, picSender.Location.Y + 10);
+
+				    chatBox.Items.Add(picSender.Name + " Unselected");
+
+				    selectedCards.Remove(picSender);
+			    }
+                chatBox.TopIndex = chatBox.Items.Count - 1;
+            }
+        }
+
+        // Fold your hand, dealer automatically wins
+        private void foldButton_Click(object sender, EventArgs e)
+        {
+            foldButton.Enabled = false;
+            replaceCards.Enabled = false;
+            redealButton.Enabled = true;
+
+            // Disable and reset selecting cards
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                if (selectedCards.Contains(singlebox))
+                {
+                    singlebox.Location = new Point(singlebox.Location.X, singlebox.Location.Y + 10);
+                }
+                singlebox.Enabled = false;
+
+                selectedCards.Remove(singlebox);
+            }
+            chatBox.Items.Add("Player Folds, Dealer Wins!");
+            chatBox.TopIndex = chatBox.Items.Count - 1;
+        }
+
         private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -285,7 +284,6 @@ namespace AwesomePokerGameSln
             }
         }
         
-
         private void TypeBox_Enter(object sender, EventArgs e)
         {
             if (typeBox.Text == "Enter a message:")
@@ -307,6 +305,7 @@ namespace AwesomePokerGameSln
             }
         }
 
+
         ////////////////////
         // Backend Handlers
         ////////////////////
@@ -316,7 +315,6 @@ namespace AwesomePokerGameSln
             //  f.Close();
             Application.Exit();
         }
-
 
         private void FrmPlaygame_Load(object sender, EventArgs e)
         {
