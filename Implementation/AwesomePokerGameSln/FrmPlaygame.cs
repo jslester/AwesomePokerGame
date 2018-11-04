@@ -21,6 +21,7 @@ namespace AwesomePokerGameSln
         private Hand playerHand;
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
+        private bool folded;
 
         public FrmPlaygame() {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace AwesomePokerGameSln
 
         private void DealCards()
         {
+            folded = false;
             replaceCards.Enabled = true;
             deck.ShuffleDeck();
             CardType[] cards;
@@ -71,29 +73,36 @@ namespace AwesomePokerGameSln
         {
             Tuple<HandType, double> playerHT, dealerHT;
             String resultString = "IM MAD WHY WASNT I SET";
-
-            playerHT = playerHand.getHandType();
+            
             dealerHT = dealerHand.getHandType();
-
+            playerHT = playerHand.getHandType();
             playerHandType.Text = playerHT.Item1.ToString();
             dealerHandType.Text = dealerHT.Item1.ToString();
-
-            chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
-            chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
-
-            if (playerHT.Item2 > dealerHT.Item2)
+            
+            if(!folded)
             {
-                resultString = "Player Wins!";
-            }
-            else if (playerHT.Item2 < dealerHT.Item2)
-            {
-                resultString = "Dealer Wins!";
+                chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
+                chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
+
+                if (playerHT.Item2 > dealerHT.Item2)
+                {
+                    resultString = "Player Wins!";
+                }
+                else if (playerHT.Item2 < dealerHT.Item2)
+                {
+                    resultString = "Dealer Wins!";
+                }
+                else
+                {
+                    resultString = "It's a tie!";
+                }
             }
             else
             {
-                resultString = "It's a tie!";
+                chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
+                chatBox.Items.Add("Player Folds");
+                resultString = "Dealer Wins!";
             }
-
             if(replaceCards.Enabled == false)
                 chatBox.Items.Add(resultString);
 
@@ -237,12 +246,15 @@ namespace AwesomePokerGameSln
             }
         }
 
+        // Fold your hand, dealer should automatically win
         private void foldButton_Click(object sender, EventArgs e)
         {
             foldButton.Enabled = false;
             replaceCards.Enabled = false;
             redealButton.Enabled = true;
+            folded = true;
 
+            // Disable and reset selecting cards
 			foreach (PictureBox singlebox in playerCardPics)
             {
                 if (selectedCards.Contains(singlebox))
@@ -252,22 +264,21 @@ namespace AwesomePokerGameSln
                 singlebox.Enabled = false;
 
 				selectedCards.Remove(singlebox);
-
             }
             CheckHand();
         }
+
+
+        //Typebox Actions
         private void TypeBox_Press_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 AddtoChat();
                 e.SuppressKeyPress = true;
-                
             }
         }
-
-
-
+        
 
         private void TypeBox_Enter(object sender, EventArgs e)
         {
