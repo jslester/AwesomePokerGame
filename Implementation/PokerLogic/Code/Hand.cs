@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardType = System.Tuple<int, int>;
 
 namespace AwesomePokerGameSln.Code
 {
@@ -22,23 +23,24 @@ namespace AwesomePokerGameSln.Code
 
     public class Hand
     {
-            private Tuple<int, int>[] cards;
-            private List<Tuple<int,int>> trashCards;
+        private CardType[] cards;
+        private List<CardType> trashCards;
 
-        public int GetLength()
+        // Constructor
+        public Hand(CardType[] cards)
         {
-            return cards.Length;
+            trashCards = new List<CardType>();
+            this.cards = cards;
         }
 
-        public Tuple<int, int> GetCardI (int index)
+        public CardType GetCardI(int index)
         {
             return cards[index];
         }
 
-        public Hand(Tuple<int, int>[] cards)
+        public List<CardType> GetTrash()
         {
-            trashCards = new List<Tuple<int, int>>();
-            this.cards = cards;
+            return trashCards;
         }
 
         public Tuple<HandType, double> getHandType()
@@ -89,7 +91,7 @@ namespace AwesomePokerGameSln.Code
                     // one pair
                     handType = HandType.ONE_PAIR;
                     int ct;
-                    foreach (Tuple<int, int> item in cards)
+                    foreach (CardType item in cards)
                     {
                         ct = cards.Count(card => card.Item1 == item.Item1);
                         if (ct == 1)
@@ -127,7 +129,7 @@ namespace AwesomePokerGameSln.Code
                     }
                     // Trash any single occurence cards
                     int ct;
-                    foreach (Tuple<int,int> item in cards)
+                    foreach (CardType item in cards)
                     {
                         ct = cards.Count(card => card.Item1 == item.Item1);
                         if(ct == 1)
@@ -160,12 +162,12 @@ namespace AwesomePokerGameSln.Code
             if (handType == HandType.HIGH)
             {
                 int highCard = 0;
-                foreach(Tuple<int,int> item in cards)
+                foreach(CardType item in cards)
                 {
                     if(item.Item1 > highCard)
                     highCard = item.Item1;
                 }
-                foreach(Tuple<int,int> item in cards)
+                foreach(CardType item in cards)
                 {
                     if(item.Item1 != highCard)
                     trashCards.Add(item);
@@ -183,7 +185,7 @@ namespace AwesomePokerGameSln.Code
             double decoratorValue = 0;
             int powNum = 2;
 
-            foreach (Tuple<int, int> item in cards)
+            foreach (CardType item in cards)
             {
                 if (cardCounter.ContainsKey(item.Item1))
                 {
