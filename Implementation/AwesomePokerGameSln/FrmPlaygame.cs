@@ -344,15 +344,5 @@ namespace AwesomePokerGameSln
             DealCards();
             redealButton.Enabled = false;
         }
-
-        private void playerHandType_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

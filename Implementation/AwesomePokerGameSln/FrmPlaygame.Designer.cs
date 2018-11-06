@@ -32,7 +32,6 @@ namespace AwesomePokerGameSln {
             this.picCard5 = new System.Windows.Forms.PictureBox();
             this.picCard2 = new System.Windows.Forms.PictureBox();
             this.redealButton = new System.Windows.Forms.Button();
-            this.playerHandType = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -51,6 +50,7 @@ namespace AwesomePokerGameSln {
             this.poolNum = new System.Windows.Forms.Label();
             this.poolLabel = new System.Windows.Forms.Label();
             this.betLabel = new System.Windows.Forms.Label();
+            this.playerHandType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -124,17 +124,6 @@ namespace AwesomePokerGameSln {
             this.redealButton.Text = "New Game";
             this.redealButton.UseVisualStyleBackColor = false;
             this.redealButton.Click += new System.EventHandler(this.redealButton_Click);
-            // 
-            // playerHandType
-            // 
-            this.playerHandType.AutoSize = true;
-            this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerHandType.Location = new System.Drawing.Point(80, 397);
-            this.playerHandType.Name = "playerHandType";
-            this.playerHandType.Size = new System.Drawing.Size(99, 33);
-            this.playerHandType.TabIndex = 7;
-            this.playerHandType.Text = "label2";
-            this.playerHandType.Click += new System.EventHandler(this.playerHandType_Click);
             // 
             // pictureBox1
             // 
@@ -226,7 +215,6 @@ namespace AwesomePokerGameSln {
             this.dealerHandType.Size = new System.Drawing.Size(99, 33);
             this.dealerHandType.TabIndex = 16;
             this.dealerHandType.Text = "label2";
-            this.dealerHandType.Click += new System.EventHandler(this.dealerHandType_Click);
             // 
             // replaceCards
             // 
@@ -327,6 +315,16 @@ namespace AwesomePokerGameSln {
             this.betLabel.Text = "Amount to Bet:";
             this.betLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // playerHandType
+            // 
+            this.playerHandType.AutoSize = true;
+            this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerHandType.Location = new System.Drawing.Point(80, 397);
+            this.playerHandType.Name = "playerHandType";
+            this.playerHandType.Size = new System.Drawing.Size(99, 33);
+            this.playerHandType.TabIndex = 7;
+            this.playerHandType.Text = "label2";
+            // 
             // FrmPlaygame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +395,6 @@ namespace AwesomePokerGameSln {
         private System.Windows.Forms.PictureBox picCard5;
         private System.Windows.Forms.PictureBox picCard2;
         private System.Windows.Forms.Button redealButton;
-        private System.Windows.Forms.Label playerHandType;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -416,5 +413,6 @@ namespace AwesomePokerGameSln {
         private System.Windows.Forms.Label poolNum;
         private System.Windows.Forms.Label poolLabel;
         private System.Windows.Forms.Label betLabel;
+        private System.Windows.Forms.Label playerHandType;
     }
 }
