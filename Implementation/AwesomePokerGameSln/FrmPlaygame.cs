@@ -469,6 +469,5 @@ namespace AwesomePokerGameSln
             DealCards();
             redealButton.Enabled = false;
         }
-
     }
 }
