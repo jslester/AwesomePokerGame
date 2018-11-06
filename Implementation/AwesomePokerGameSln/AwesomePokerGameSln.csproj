@@ -48,7 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Code\CardImageHelper.cs" />
+    <Compile Include="AddFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFunds.Designer.cs">
+      <DependentUpon>AddFunds.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPlaygame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddFunds.resx">
+      <DependentUpon>AddFunds.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPlaygame.resx">
       <DependentUpon>FrmPlaygame.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +312,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\blacklistWords.txt" />
+    <None Include="Resources\pokerchip.png" />
+    <None Include="Resources\pokerChip.bmp" />
     <None Include="Resources\blacklistWords.txt.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

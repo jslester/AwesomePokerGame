@@ -21,6 +21,11 @@ namespace AwesomePokerGameSln
         private Hand playerHand;
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
+        private int betVal = 0;
+        private int walletVal = 0;
+        private int poolVal = 0;
+        Random rand = new Random();
+        int dealBet;
 
         public FrmPlaygame()
         {
@@ -35,7 +40,9 @@ namespace AwesomePokerGameSln
             {
                 dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
             }
-            
+            betNum.Text = "$" + betVal.ToString();
+            walletNum.Text = "$" + walletVal.ToString();
+            poolNum.Text = "$" + poolVal.ToString();
         }
 
         private void DealCards()
@@ -67,6 +74,14 @@ namespace AwesomePokerGameSln
             dealerHand = new Hand(cards);
 
             CheckHand();
+
+            // dealer makes his bet
+            chatBox.Items.Add("Dealer: Place your bets!");
+            dealBet = 5 * rand.Next(20, 200);
+            poolVal = +dealBet;
+            poolNum.Text = "$" + poolVal.ToString();
+            chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
+            poolNum.Update();
         }
 
         private void CheckHand()
@@ -85,10 +100,20 @@ namespace AwesomePokerGameSln
                 if (playerHT.Item2 > dealerHT.Item2)
                 {
                     resultString = "Player Wins!";
+                    // award player's wallet pool
+                    walletVal += poolVal;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    chatBox.Items.Add(string.Format("Player awarded ${0}", poolVal.ToString()));
+                    poolVal = 0;
+                    poolNum.Text = "$" + poolVal.ToString();
                 }
                 else if (playerHT.Item2 < dealerHT.Item2)
                 {
                     resultString = "Dealer Wins!";
+                    // reset pool (aka other player awarded pool)
+                    chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+                    poolVal = 0;
+                    poolNum.Text = "$" + poolVal.ToString();
                 }
                 else
                 {
@@ -105,6 +130,7 @@ namespace AwesomePokerGameSln
         // Start a new game, reset all vals
         private void redealButton_Click(object sender, EventArgs e)
         {
+
             chatBox.Items.Add("Dealer: GoodLuck!");
             redealButton.Enabled = false;
             replaceCards.Enabled = true;
@@ -113,6 +139,7 @@ namespace AwesomePokerGameSln
             {
                 singlebox.Enabled = true;
             }
+
             DealCards();
         }
 
@@ -272,6 +299,10 @@ namespace AwesomePokerGameSln
                 selectedCards.Remove(singlebox);
             }
             chatBox.Items.Add("Player Folds, Dealer Wins!");
+            // reset pool (aka other player awarded pool)
+            chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+            poolVal = 0;
+            poolNum.Text = "$" + poolVal.ToString();
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
@@ -294,8 +325,6 @@ namespace AwesomePokerGameSln
             }
         }
 
-
-
         private void TypeBox_Leave(object sender, EventArgs e)
         {
             if (typeBox.Text == "")
@@ -305,6 +334,150 @@ namespace AwesomePokerGameSln
             }
         }
 
+        ///////////////////////////
+        // Betting
+        ///////////////////////////
+        
+        // Place bet
+        private void placeBetButton_Click(object sender, EventArgs e)
+        {
+            chatBox.Items.Add(string.Format("Player added ${0} to pool",betVal));
+            poolVal = poolVal + betVal;
+            poolNum.Text = "$" + poolVal.ToString();
+            poolNum.Update();
+            betVal = 0;
+            betNum.Text = "$" + betVal.ToString();
+            betNum.Update();
+        }
+
+        private void resetBetButton_Click(object sender, EventArgs e)
+        {
+            walletVal += betVal;
+            walletNum.Text = "$" + walletVal.ToString();
+            walletNum.Update();
+
+            betVal = 0;
+            betNum.Text = "$" + betVal.ToString();
+            betNum.Update();
+        }
+        // Winning Hand 
+
+        // Clicking chips
+        private void fiveChip_Click(object sender, EventArgs e)
+        {
+            if(walletVal > 0 && walletVal-5 >= 0)
+            {
+                walletVal -= 5;
+                betVal += 5;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void tenChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 10 >= 0)
+            {
+                walletVal -= 10;
+                betVal += 10;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void twentyFiveChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 25 >= 0)
+            {
+                walletVal -= 25;
+                betVal += 25;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void fiftyChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 50 >= 0)
+            {
+                walletVal -= 50;
+                betVal += 50;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void hundredChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 100 >= 0)
+            {
+                walletVal -= 100;
+                betVal += 100;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void addFundsChip_Click(object sender, EventArgs e)
+        {
+            AddFunds addFunds = new AddFunds();
+            addFunds.ShowDialog();
+            int addedFunds = addFunds.value;
+            switch (addedFunds)
+            {
+                case 100:
+                    walletVal += 100;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 500:
+                    walletVal += 500;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 1000:
+                    walletVal += 1000;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                default:
+                    walletVal += 0;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+            }
+
+        }
 
         ////////////////////
         // Backend Handlers

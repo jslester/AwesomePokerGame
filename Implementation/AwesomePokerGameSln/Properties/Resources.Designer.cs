@@ -149,12 +149,7 @@ namespace AwesomePokerGameSln.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
-        internal static string[] getObject(string v)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -490,15 +485,11 @@ namespace AwesomePokerGameSln.Properties {
         ///anus
         ///arse
         ///ass
-        ///ass fuck
-        ///ass hole
         ///assfucker
         ///asshole
         ///assshole
         ///bastard
         ///bitch
-        ///black cock
-        ///bloody hell
         ///boong
         ///cock
         ///cockfucker
@@ -522,19 +513,14 @@ namespace AwesomePokerGameSln.Properties {
         ///fag
         ///faggot
         ///fuck
-        ///Fuck off
-        ///fuck you
         ///fuckass
         ///fuckhole
-        ///god damn
         ///gook
-        ///hard core
         ///hardcore
         ///homoerotic
         ///hore
         ///lesbian
         ///lesbians
-        ///mother fucker
         ///motherfuck
         ///motherfucker
         ///negro
@@ -544,7 +530,21 @@ namespace AwesomePokerGameSln.Properties {
         ///penis
         ///penisfucker
         ///piss
-        ///piss off [rest of string was truncated]&quot;;.
+        ///porn
+        ///porno
+        ///pornography
+        ///pussy
+        ///retard
+        ///sadist
+        ///sex
+        ///sexy
+        ///shit
+        ///slut
+        ///suck
+        ///tits
+        ///viagra
+        ///whore
+        ///xxx.
         /// </summary>
         internal static string blacklistWords {
             get {
@@ -728,6 +728,16 @@ namespace AwesomePokerGameSln.Properties {
         internal static System.Drawing.Bitmap king_of_spades2 {
             get {
                 object obj = ResourceManager.GetObject("king_of_spades2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pokerchip {
+            get {
+                object obj = ResourceManager.GetObject("pokerchip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
