@@ -312,15 +312,11 @@ namespace AwesomePokerGameSln
         // Place bet
         private void placeBetButton_Click(object sender, EventArgs e)
         {
-            if (betVal > 0)
-            {
-                chatBox.Items.Add("Player added $100 to pool");
-                poolVal = poolVal + betVal;
-                betNum.Text = poolVal.ToString();
-                betNum.Refresh();
-                betVal = 0;
-            }
-
+            chatBox.Items.Add(string.Format("Player added {0} to pool",betVal));
+            poolVal = poolVal + betVal;
+            poolNum.Text = poolVal.ToString();
+            poolNum.Refresh();
+            betVal = 0;
         }
 
         private void resetBetButton_Click(object sender, EventArgs e)
