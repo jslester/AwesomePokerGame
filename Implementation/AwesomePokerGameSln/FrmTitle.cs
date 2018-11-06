@@ -39,11 +39,12 @@ namespace AwesomePokerGameSln
                 frmPlaygame.Show();
                 Hide();
             }
-            //else {
-            //BlackjackGame blackjack = new BlackjackGame();
-            //blackjack.Show();
-            //Hide();
-            //}
+            else if (comboBox1.Text == "Blackjack") 
+            {
+                FrmBlackjack blackjack = new FrmBlackjack();
+                blackjack.Show();
+                Hide();
+            }
         }
     }
 }

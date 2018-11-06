@@ -300,7 +300,7 @@ namespace AwesomePokerGameSln
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.ResourceManager.GetObject("TableFabric.jpg") as System.Drawing.Image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1563, 765);
             this.Controls.Add(this.pictureBox6);

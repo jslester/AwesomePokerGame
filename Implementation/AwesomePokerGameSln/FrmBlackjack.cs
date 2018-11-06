@@ -1,4 +1,5 @@
 ﻿using AwesomePokerGameSln.Code;
+using AwesomePokerGameSln;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,7 +80,12 @@ namespace AwesomePokerGameSln
             bool dealerHighAce = false;
             bool dealerWins = false;
             bool dealerBusts = false;
-            int[] dealerCards = dealerHand.Select(card >= card.Item2).ToArray();
+            int[] dealerCards = new int[5];
+
+            for (int j=0; j<dealerCards.Length; j++)
+            {
+                dealerCards[j] = dealerHand.GetCardI(j).Item2;
+            }
 
             //Replace array values for faces with actual values
             for (int j = 0; j < 5; j++)
@@ -128,7 +134,12 @@ namespace AwesomePokerGameSln
             bool playerHighAce = false;
             bool playerWins = false;
             bool playerBusts = false;
-            int[] playerCards = playerHand.Select(card => card.Item2).ToArray();
+            int[] playerCards = new int[5];
+
+            for (int j=0; j<dealerCards.Length; j++)
+            {
+                playerCards[j] = playerHand.GetCardI(j).Item2;
+            }
 
             for (int k = 0; k < 5; k++)
             {
@@ -147,16 +158,9 @@ namespace AwesomePokerGameSln
             {
                 playerWins = true;
             }
-            else
+            else if(playerCount >= 21)
             {
-                while (playerBusts == false && (hitButton.Enabled == true || stayButton.Enabled == false))
-                {
-                    if(playerCount >= 21)
-                    {
-                        hitButton.Enabled = false;
-                    }
-                }
-                
+                hitButton.Enabled = false;
             }
 
             chatBox.Items.Add("Player: " + (int)playerCount);
