@@ -302,7 +302,7 @@ namespace AwesomePokerGameSln
             // reset pool (aka other player awarded pool)
             chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
             poolVal = 0;
-
+            poolNum.Text = "$" + poolVal.ToString();
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
