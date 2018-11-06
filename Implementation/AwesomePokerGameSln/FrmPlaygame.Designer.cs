@@ -360,6 +360,7 @@ namespace AwesomePokerGameSln {
             this.tenChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.tenChip.TabIndex = 27;
             this.tenChip.TabStop = false;
+            this.tenChip.Click += new System.EventHandler(this.tenChip_Click);
             // 
             // twentyFiveChip
             // 
@@ -370,6 +371,7 @@ namespace AwesomePokerGameSln {
             this.twentyFiveChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.twentyFiveChip.TabIndex = 28;
             this.twentyFiveChip.TabStop = false;
+            this.twentyFiveChip.Click += new System.EventHandler(this.twentyFiveChip_Click);
             // 
             // addFundsChip
             // 
@@ -391,6 +393,7 @@ namespace AwesomePokerGameSln {
             this.hundredChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hundredChip.TabIndex = 30;
             this.hundredChip.TabStop = false;
+            this.hundredChip.Click += new System.EventHandler(this.hundredChip_Click);
             // 
             // fiftyChip
             // 
@@ -401,6 +404,7 @@ namespace AwesomePokerGameSln {
             this.fiftyChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fiftyChip.TabIndex = 29;
             this.fiftyChip.TabStop = false;
+            this.fiftyChip.Click += new System.EventHandler(this.fiftyChip_Click);
             // 
             // walletLabel
             // 

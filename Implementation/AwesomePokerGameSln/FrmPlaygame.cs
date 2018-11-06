@@ -334,6 +334,7 @@ namespace AwesomePokerGameSln
             betNum.Text = "$" + betVal.ToString();
             betNum.Update();
         }
+        // Winning Hand 
 
         // Clicking chips
         private void fiveChip_Click(object sender, EventArgs e)
@@ -342,6 +343,74 @@ namespace AwesomePokerGameSln
             {
                 walletVal -= 5;
                 betVal += 5;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void tenChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 10 > 0)
+            {
+                walletVal -= 10;
+                betVal += 10;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void twentyFiveChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 25 > 0)
+            {
+                walletVal -= 25;
+                betVal += 25;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void fiftyChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 50 > 0)
+            {
+                walletVal -= 50;
+                betVal += 50;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void hundredChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 100 > 0)
+            {
+                walletVal -= 100;
+                betVal += 100;
                 walletNum.Text = "$" + walletVal.ToString();
                 walletNum.Update();
                 betNum.Text = "$" + betVal.ToString();
@@ -383,6 +452,7 @@ namespace AwesomePokerGameSln
             }
 
         }
+
         ////////////////////
         // Backend Handlers
         ////////////////////
@@ -399,5 +469,6 @@ namespace AwesomePokerGameSln
             DealCards();
             redealButton.Enabled = false;
         }
+
     }
 }
