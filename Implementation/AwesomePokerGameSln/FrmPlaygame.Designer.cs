@@ -54,7 +54,7 @@ namespace AwesomePokerGameSln {
             this.fiveChip = new System.Windows.Forms.PictureBox();
             this.tenChip = new System.Windows.Forms.PictureBox();
             this.twentyFiveChip = new System.Windows.Forms.PictureBox();
-            this.fiveHunChip = new System.Windows.Forms.PictureBox();
+            this.addFundsChip = new System.Windows.Forms.PictureBox();
             this.hundredChip = new System.Windows.Forms.PictureBox();
             this.fiftyChip = new System.Windows.Forms.PictureBox();
             this.walletLabel = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@ namespace AwesomePokerGameSln {
             ((System.ComponentModel.ISupportInitialize)(this.fiveChip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tenChip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.twentyFiveChip)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fiveHunChip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addFundsChip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hundredChip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fiftyChip)).BeginInit();
             this.SuspendLayout();
@@ -284,6 +284,7 @@ namespace AwesomePokerGameSln {
             this.resetBet.TabIndex = 21;
             this.resetBet.Text = "Reset Bet";
             this.resetBet.UseVisualStyleBackColor = false;
+            this.resetBet.Click += new System.EventHandler(this.resetBetButton_Click);
             // 
             // betNum
             // 
@@ -348,6 +349,7 @@ namespace AwesomePokerGameSln {
             this.fiveChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fiveChip.TabIndex = 26;
             this.fiveChip.TabStop = false;
+            this.fiveChip.Click += new System.EventHandler(this.fiveChip_Click);
             // 
             // tenChip
             // 
@@ -369,15 +371,16 @@ namespace AwesomePokerGameSln {
             this.twentyFiveChip.TabIndex = 28;
             this.twentyFiveChip.TabStop = false;
             // 
-            // fiveHunChip
+            // addFundsChip
             // 
-            this.fiveHunChip.Image = ((System.Drawing.Image)(resources.GetObject("fiveHunChip.Image")));
-            this.fiveHunChip.Location = new System.Drawing.Point(174, 532);
-            this.fiveHunChip.Name = "fiveHunChip";
-            this.fiveHunChip.Size = new System.Drawing.Size(75, 75);
-            this.fiveHunChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.fiveHunChip.TabIndex = 31;
-            this.fiveHunChip.TabStop = false;
+            this.addFundsChip.Image = ((System.Drawing.Image)(resources.GetObject("addFundsChip.Image")));
+            this.addFundsChip.Location = new System.Drawing.Point(174, 532);
+            this.addFundsChip.Name = "addFundsChip";
+            this.addFundsChip.Size = new System.Drawing.Size(75, 75);
+            this.addFundsChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.addFundsChip.TabIndex = 31;
+            this.addFundsChip.TabStop = false;
+            this.addFundsChip.Click += new System.EventHandler(this.addFundsChip_Click);
             // 
             // hundredChip
             // 
@@ -430,7 +433,7 @@ namespace AwesomePokerGameSln {
             this.ClientSize = new System.Drawing.Size(1081, 612);
             this.Controls.Add(this.walletLabel);
             this.Controls.Add(this.walletNum);
-            this.Controls.Add(this.fiveHunChip);
+            this.Controls.Add(this.addFundsChip);
             this.Controls.Add(this.hundredChip);
             this.Controls.Add(this.fiftyChip);
             this.Controls.Add(this.twentyFiveChip);
@@ -479,7 +482,7 @@ namespace AwesomePokerGameSln {
             ((System.ComponentModel.ISupportInitialize)(this.fiveChip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tenChip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.twentyFiveChip)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fiveHunChip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addFundsChip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hundredChip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fiftyChip)).EndInit();
             this.ResumeLayout(false);
@@ -527,7 +530,7 @@ namespace AwesomePokerGameSln {
         private System.Windows.Forms.PictureBox fiveChip;
         private System.Windows.Forms.PictureBox tenChip;
         private System.Windows.Forms.PictureBox twentyFiveChip;
-        private System.Windows.Forms.PictureBox fiveHunChip;
+        private System.Windows.Forms.PictureBox addFundsChip;
         private System.Windows.Forms.PictureBox hundredChip;
         private System.Windows.Forms.PictureBox fiftyChip;
         private System.Windows.Forms.Label walletLabel;
