@@ -312,6 +312,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\blacklistWords.txt" />
+    <None Include="Resources\pokerchip.png" />
+    <None Include="Resources\pokerChip.bmp" />
     <None Include="Resources\blacklistWords.txt.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

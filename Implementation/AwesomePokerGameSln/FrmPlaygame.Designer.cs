@@ -59,6 +59,7 @@ namespace AwesomePokerGameSln {
             this.fiftyChip = new System.Windows.Forms.PictureBox();
             this.walletLabel = new System.Windows.Forms.Label();
             this.walletNum = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -342,18 +343,19 @@ namespace AwesomePokerGameSln {
             // 
             // fiveChip
             // 
-            this.fiveChip.Image = ((System.Drawing.Image)(resources.GetObject("fiveChip.Image")));
+            this.fiveChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.fiveChip.Location = new System.Drawing.Point(12, 451);
             this.fiveChip.Name = "fiveChip";
             this.fiveChip.Size = new System.Drawing.Size(75, 75);
             this.fiveChip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fiveChip.TabIndex = 26;
             this.fiveChip.TabStop = false;
+            this.fiveChip.Tag = "";
             this.fiveChip.Click += new System.EventHandler(this.fiveChip_Click);
             // 
             // tenChip
             // 
-            this.tenChip.Image = ((System.Drawing.Image)(resources.GetObject("tenChip.Image")));
+            this.tenChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.tenChip.Location = new System.Drawing.Point(93, 451);
             this.tenChip.Name = "tenChip";
             this.tenChip.Size = new System.Drawing.Size(75, 75);
@@ -364,7 +366,7 @@ namespace AwesomePokerGameSln {
             // 
             // twentyFiveChip
             // 
-            this.twentyFiveChip.Image = ((System.Drawing.Image)(resources.GetObject("twentyFiveChip.Image")));
+            this.twentyFiveChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.twentyFiveChip.Location = new System.Drawing.Point(174, 451);
             this.twentyFiveChip.Name = "twentyFiveChip";
             this.twentyFiveChip.Size = new System.Drawing.Size(75, 75);
@@ -375,7 +377,7 @@ namespace AwesomePokerGameSln {
             // 
             // addFundsChip
             // 
-            this.addFundsChip.Image = ((System.Drawing.Image)(resources.GetObject("addFundsChip.Image")));
+            this.addFundsChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.addFundsChip.Location = new System.Drawing.Point(174, 532);
             this.addFundsChip.Name = "addFundsChip";
             this.addFundsChip.Size = new System.Drawing.Size(75, 75);
@@ -386,7 +388,7 @@ namespace AwesomePokerGameSln {
             // 
             // hundredChip
             // 
-            this.hundredChip.Image = ((System.Drawing.Image)(resources.GetObject("hundredChip.Image")));
+            this.hundredChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.hundredChip.Location = new System.Drawing.Point(93, 532);
             this.hundredChip.Name = "hundredChip";
             this.hundredChip.Size = new System.Drawing.Size(75, 75);
@@ -397,7 +399,7 @@ namespace AwesomePokerGameSln {
             // 
             // fiftyChip
             // 
-            this.fiftyChip.Image = ((System.Drawing.Image)(resources.GetObject("fiftyChip.Image")));
+            this.fiftyChip.Image = global::AwesomePokerGameSln.Properties.Resources.pokerchip;
             this.fiftyChip.Location = new System.Drawing.Point(12, 532);
             this.fiftyChip.Name = "fiftyChip";
             this.fiftyChip.Size = new System.Drawing.Size(75, 75);
@@ -428,6 +430,15 @@ namespace AwesomePokerGameSln {
             this.walletNum.Text = "label1";
             this.walletNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 482);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "label1";
+            // 
             // FrmPlaygame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +446,7 @@ namespace AwesomePokerGameSln {
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1081, 612);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.walletLabel);
             this.Controls.Add(this.walletNum);
             this.Controls.Add(this.addFundsChip);
@@ -539,5 +551,6 @@ namespace AwesomePokerGameSln {
         private System.Windows.Forms.PictureBox fiftyChip;
         private System.Windows.Forms.Label walletLabel;
         private System.Windows.Forms.Label walletNum;
+        private System.Windows.Forms.Label label1;
     }
 }
