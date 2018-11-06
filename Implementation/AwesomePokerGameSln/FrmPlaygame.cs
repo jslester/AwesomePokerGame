@@ -357,6 +357,31 @@ namespace AwesomePokerGameSln
         {
             AddFunds addFunds = new AddFunds();
             addFunds.ShowDialog();
+            int addedFunds = addFunds.value;
+            switch (addedFunds)
+            {
+                case 100:
+                    walletVal += 100;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 500:
+                    walletVal += 500;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 1000:
+                    walletVal += 1000;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                default:
+                    walletVal += 0;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+            }
+
         }
         ////////////////////
         // Backend Handlers

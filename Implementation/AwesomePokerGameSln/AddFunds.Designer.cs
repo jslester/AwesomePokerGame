@@ -43,6 +43,7 @@
             this.add1Hund.TabIndex = 0;
             this.add1Hund.Text = "$100";
             this.add1Hund.UseVisualStyleBackColor = true;
+            this.add1Hund.Click += new System.EventHandler(this.add1Hund_Click);
             // 
             // add5Hund
             // 
@@ -53,6 +54,7 @@
             this.add5Hund.TabIndex = 1;
             this.add5Hund.Text = "$500";
             this.add5Hund.UseVisualStyleBackColor = true;
+            this.add5Hund.Click += new System.EventHandler(this.add5Hund_Click);
             // 
             // addThousand
             // 
@@ -63,6 +65,7 @@
             this.addThousand.TabIndex = 2;
             this.addThousand.Text = "$1000";
             this.addThousand.UseVisualStyleBackColor = true;
+            this.addThousand.Click += new System.EventHandler(this.addThousand_Click);
             // 
             // cancelAddFunds
             // 
