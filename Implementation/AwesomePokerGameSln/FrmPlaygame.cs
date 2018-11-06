@@ -339,7 +339,7 @@ namespace AwesomePokerGameSln
         // Clicking chips
         private void fiveChip_Click(object sender, EventArgs e)
         {
-            if(walletVal > 0 && walletVal-5 > 0)
+            if(walletVal > 0 && walletVal-5 >= 0)
             {
                 walletVal -= 5;
                 betVal += 5;
@@ -356,7 +356,7 @@ namespace AwesomePokerGameSln
 
         private void tenChip_Click(object sender, EventArgs e)
         {
-            if (walletVal > 0 && walletVal - 10 > 0)
+            if (walletVal > 0 && walletVal - 10 >= 0)
             {
                 walletVal -= 10;
                 betVal += 10;
@@ -373,7 +373,7 @@ namespace AwesomePokerGameSln
 
         private void twentyFiveChip_Click(object sender, EventArgs e)
         {
-            if (walletVal > 0 && walletVal - 25 > 0)
+            if (walletVal > 0 && walletVal - 25 >= 0)
             {
                 walletVal -= 25;
                 betVal += 25;
@@ -390,7 +390,7 @@ namespace AwesomePokerGameSln
 
         private void fiftyChip_Click(object sender, EventArgs e)
         {
-            if (walletVal > 0 && walletVal - 50 > 0)
+            if (walletVal > 0 && walletVal - 50 >= 0)
             {
                 walletVal -= 50;
                 betVal += 50;
@@ -407,7 +407,7 @@ namespace AwesomePokerGameSln
 
         private void hundredChip_Click(object sender, EventArgs e)
         {
-            if (walletVal > 0 && walletVal - 100 > 0)
+            if (walletVal > 0 && walletVal - 100 >= 0)
             {
                 walletVal -= 100;
                 betVal += 100;
