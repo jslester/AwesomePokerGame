@@ -24,6 +24,8 @@ namespace AwesomePokerGameSln
         private int betVal = 0;
         private int walletVal = 0;
         private int poolVal = 0;
+        Random rand = new Random();
+        int dealBet;
 
         public FrmPlaygame()
         {
@@ -72,6 +74,14 @@ namespace AwesomePokerGameSln
             dealerHand = new Hand(cards);
 
             CheckHand();
+
+            // dealer makes his bet
+            chatBox.Items.Add("Dealer: Place your bets!");
+            dealBet = 5 * rand.Next(20, 200);
+            poolVal = +dealBet;
+            poolNum.Text = "$" + poolVal.ToString();
+            chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
+            poolNum.Update();
         }
 
         private void CheckHand()
@@ -90,10 +100,20 @@ namespace AwesomePokerGameSln
                 if (playerHT.Item2 > dealerHT.Item2)
                 {
                     resultString = "Player Wins!";
+                    // award player's wallet pool
+                    walletVal += poolVal;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    chatBox.Items.Add(string.Format("Player awarded ${0}", poolVal.ToString()));
+                    poolVal = 0;
+                    poolNum.Text = "$" + poolVal.ToString();
                 }
                 else if (playerHT.Item2 < dealerHT.Item2)
                 {
                     resultString = "Dealer Wins!";
+                    // reset pool (aka other player awarded pool)
+                    chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+                    poolVal = 0;
+                    poolNum.Text = "$" + poolVal.ToString();
                 }
                 else
                 {
@@ -110,6 +130,7 @@ namespace AwesomePokerGameSln
         // Start a new game, reset all vals
         private void redealButton_Click(object sender, EventArgs e)
         {
+
             chatBox.Items.Add("Dealer: GoodLuck!");
             redealButton.Enabled = false;
             replaceCards.Enabled = true;
@@ -118,6 +139,7 @@ namespace AwesomePokerGameSln
             {
                 singlebox.Enabled = true;
             }
+
             DealCards();
         }
 
@@ -277,6 +299,10 @@ namespace AwesomePokerGameSln
                 selectedCards.Remove(singlebox);
             }
             chatBox.Items.Add("Player Folds, Dealer Wins!");
+            // reset pool (aka other player awarded pool)
+            chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+            poolVal = 0;
+
             chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
