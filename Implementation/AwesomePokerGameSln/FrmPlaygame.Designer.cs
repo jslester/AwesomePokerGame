@@ -265,7 +265,7 @@ namespace AwesomePokerGameSln {
             // placeBet
             // 
             this.placeBet.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.placeBet.Location = new System.Drawing.Point(32, 568);
+            this.placeBet.Location = new System.Drawing.Point(414, 532);
             this.placeBet.Name = "placeBet";
             this.placeBet.Size = new System.Drawing.Size(112, 32);
             this.placeBet.TabIndex = 20;
@@ -276,7 +276,7 @@ namespace AwesomePokerGameSln {
             // resetBet
             // 
             this.resetBet.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.resetBet.Location = new System.Drawing.Point(161, 568);
+            this.resetBet.Location = new System.Drawing.Point(414, 494);
             this.resetBet.Name = "resetBet";
             this.resetBet.Size = new System.Drawing.Size(112, 32);
             this.resetBet.TabIndex = 21;
@@ -286,11 +286,11 @@ namespace AwesomePokerGameSln {
             // betNum
             // 
             this.betNum.BackColor = System.Drawing.Color.Transparent;
-            this.betNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betNum.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.betNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betNum.Location = new System.Drawing.Point(161, 525);
+            this.betNum.Location = new System.Drawing.Point(296, 518);
             this.betNum.Name = "betNum";
-            this.betNum.Size = new System.Drawing.Size(112, 40);
+            this.betNum.Size = new System.Drawing.Size(112, 44);
             this.betNum.TabIndex = 22;
             this.betNum.Text = "label1";
             this.betNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,7 +320,7 @@ namespace AwesomePokerGameSln {
             // betLabel
             // 
             this.betLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betLabel.Location = new System.Drawing.Point(161, 505);
+            this.betLabel.Location = new System.Drawing.Point(296, 494);
             this.betLabel.Name = "betLabel";
             this.betLabel.Size = new System.Drawing.Size(112, 20);
             this.betLabel.TabIndex = 25;
