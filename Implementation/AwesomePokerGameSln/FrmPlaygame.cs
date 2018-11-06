@@ -355,7 +355,8 @@ namespace AwesomePokerGameSln
 
         private void addFundsChip_Click(object sender, EventArgs e)
         {
-
+            AddFunds addFunds = new AddFunds();
+            addFunds.ShowDialog();
         }
         ////////////////////
         // Backend Handlers
