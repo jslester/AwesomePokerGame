@@ -45,6 +45,12 @@ namespace AwesomePokerGameSln {
             this.replaceCards = new System.Windows.Forms.Button();
             this.foldButton = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.placeBet = new System.Windows.Forms.Button();
+            this.resetBet = new System.Windows.Forms.Button();
+            this.betNum = new System.Windows.Forms.Label();
+            this.poolNum = new System.Windows.Forms.Label();
+            this.poolLabel = new System.Windows.Forms.Label();
+            this.betLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -61,10 +67,9 @@ namespace AwesomePokerGameSln {
             // picCard1
             // 
             this.picCard1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picCard1.Location = new System.Drawing.Point(114, 338);
-            this.picCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picCard1.Location = new System.Drawing.Point(76, 220);
             this.picCard1.Name = "picCard1";
-            this.picCard1.Size = new System.Drawing.Size(150, 231);
+            this.picCard1.Size = new System.Drawing.Size(100, 150);
             this.picCard1.TabIndex = 0;
             this.picCard1.TabStop = false;
             this.picCard1.Click += new System.EventHandler(this.CardClickHandler);
@@ -72,10 +77,9 @@ namespace AwesomePokerGameSln {
             // picCard3
             // 
             this.picCard3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picCard3.Location = new System.Drawing.Point(518, 338);
-            this.picCard3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picCard3.Location = new System.Drawing.Point(345, 220);
             this.picCard3.Name = "picCard3";
-            this.picCard3.Size = new System.Drawing.Size(150, 231);
+            this.picCard3.Size = new System.Drawing.Size(100, 150);
             this.picCard3.TabIndex = 1;
             this.picCard3.TabStop = false;
             this.picCard3.Click += new System.EventHandler(this.CardClickHandler);
@@ -83,10 +87,9 @@ namespace AwesomePokerGameSln {
             // picCard4
             // 
             this.picCard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picCard4.Location = new System.Drawing.Point(720, 338);
-            this.picCard4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picCard4.Location = new System.Drawing.Point(480, 220);
             this.picCard4.Name = "picCard4";
-            this.picCard4.Size = new System.Drawing.Size(150, 231);
+            this.picCard4.Size = new System.Drawing.Size(100, 150);
             this.picCard4.TabIndex = 2;
             this.picCard4.TabStop = false;
             this.picCard4.Click += new System.EventHandler(this.CardClickHandler);
@@ -94,10 +97,9 @@ namespace AwesomePokerGameSln {
             // picCard5
             // 
             this.picCard5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picCard5.Location = new System.Drawing.Point(928, 338);
-            this.picCard5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picCard5.Location = new System.Drawing.Point(619, 220);
             this.picCard5.Name = "picCard5";
-            this.picCard5.Size = new System.Drawing.Size(150, 231);
+            this.picCard5.Size = new System.Drawing.Size(100, 150);
             this.picCard5.TabIndex = 3;
             this.picCard5.TabStop = false;
             this.picCard5.Click += new System.EventHandler(this.CardClickHandler);
@@ -105,10 +107,9 @@ namespace AwesomePokerGameSln {
             // picCard2
             // 
             this.picCard2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picCard2.Location = new System.Drawing.Point(316, 338);
-            this.picCard2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picCard2.Location = new System.Drawing.Point(211, 220);
             this.picCard2.Name = "picCard2";
-            this.picCard2.Size = new System.Drawing.Size(150, 231);
+            this.picCard2.Size = new System.Drawing.Size(100, 150);
             this.picCard2.TabIndex = 4;
             this.picCard2.TabStop = false;
             this.picCard2.Click += new System.EventHandler(this.CardClickHandler);
@@ -116,10 +117,9 @@ namespace AwesomePokerGameSln {
             // redealButton
             // 
             this.redealButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.redealButton.Location = new System.Drawing.Point(444, 592);
-            this.redealButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.redealButton.Location = new System.Drawing.Point(296, 385);
             this.redealButton.Name = "redealButton";
-            this.redealButton.Size = new System.Drawing.Size(268, 132);
+            this.redealButton.Size = new System.Drawing.Size(179, 86);
             this.redealButton.TabIndex = 6;
             this.redealButton.Text = "New Game";
             this.redealButton.UseVisualStyleBackColor = false;
@@ -129,81 +129,77 @@ namespace AwesomePokerGameSln {
             // 
             this.playerHandType.AutoSize = true;
             this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerHandType.Location = new System.Drawing.Point(120, 611);
-            this.playerHandType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.playerHandType.Location = new System.Drawing.Point(80, 397);
             this.playerHandType.Name = "playerHandType";
-            this.playerHandType.Size = new System.Drawing.Size(145, 52);
+            this.playerHandType.Size = new System.Drawing.Size(99, 33);
             this.playerHandType.TabIndex = 7;
             this.playerHandType.Text = "label2";
+            this.playerHandType.Click += new System.EventHandler(this.playerHandType_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(316, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(211, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 150);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(928, 18);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(619, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 150);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(720, 18);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(480, 12);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 150);
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(518, 18);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox4.Location = new System.Drawing.Point(345, 12);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox4.Size = new System.Drawing.Size(100, 150);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(114, 18);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox5.Location = new System.Drawing.Point(76, 12);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox5.Size = new System.Drawing.Size(100, 150);
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
             // 
             // chatBox
             // 
             this.chatBox.FormattingEnabled = true;
-            this.chatBox.ItemHeight = 20;
-            this.chatBox.Location = new System.Drawing.Point(1176, 255);
+            this.chatBox.Location = new System.Drawing.Point(784, 166);
+            this.chatBox.Margin = new System.Windows.Forms.Padding(2);
             this.chatBox.Name = "chatBox";
             this.chatBox.ScrollAlwaysVisible = true;
-            this.chatBox.Size = new System.Drawing.Size(340, 384);
+            this.chatBox.Size = new System.Drawing.Size(228, 251);
             this.chatBox.TabIndex = 13;
             this.chatBox.SelectedIndexChanged += new System.EventHandler(this.chatBox_SelectedIndexChanged);
             // 
             // typeBox
             // 
             this.typeBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.typeBox.Location = new System.Drawing.Point(1176, 648);
+            this.typeBox.Location = new System.Drawing.Point(784, 421);
+            this.typeBox.Margin = new System.Windows.Forms.Padding(2);
             this.typeBox.Multiline = true;
             this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(223, 61);
+            this.typeBox.Size = new System.Drawing.Size(150, 41);
             this.typeBox.TabIndex = 14;
             this.typeBox.Text = "Enter a message:";
             this.typeBox.Enter += new System.EventHandler(this.TypeBox_Enter);
@@ -212,9 +208,10 @@ namespace AwesomePokerGameSln {
             // 
             // chatSendButton
             // 
-            this.chatSendButton.Location = new System.Drawing.Point(1407, 648);
+            this.chatSendButton.Location = new System.Drawing.Point(938, 421);
+            this.chatSendButton.Margin = new System.Windows.Forms.Padding(2);
             this.chatSendButton.Name = "chatSendButton";
-            this.chatSendButton.Size = new System.Drawing.Size(111, 63);
+            this.chatSendButton.Size = new System.Drawing.Size(74, 41);
             this.chatSendButton.TabIndex = 15;
             this.chatSendButton.Text = "Send Message";
             this.chatSendButton.UseVisualStyleBackColor = true;
@@ -224,10 +221,9 @@ namespace AwesomePokerGameSln {
             // 
             this.dealerHandType.AutoSize = true;
             this.dealerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dealerHandType.Location = new System.Drawing.Point(120, 265);
-            this.dealerHandType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dealerHandType.Location = new System.Drawing.Point(80, 172);
             this.dealerHandType.Name = "dealerHandType";
-            this.dealerHandType.Size = new System.Drawing.Size(145, 52);
+            this.dealerHandType.Size = new System.Drawing.Size(99, 33);
             this.dealerHandType.TabIndex = 16;
             this.dealerHandType.Text = "label2";
             this.dealerHandType.Click += new System.EventHandler(this.dealerHandType_Click);
@@ -235,9 +231,10 @@ namespace AwesomePokerGameSln {
             // replaceCards
             // 
             this.replaceCards.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.replaceCards.Location = new System.Drawing.Point(830, 589);
+            this.replaceCards.Location = new System.Drawing.Point(553, 383);
+            this.replaceCards.Margin = new System.Windows.Forms.Padding(2);
             this.replaceCards.Name = "replaceCards";
-            this.replaceCards.Size = new System.Drawing.Size(168, 52);
+            this.replaceCards.Size = new System.Drawing.Size(112, 34);
             this.replaceCards.TabIndex = 17;
             this.replaceCards.Text = "Re-Draw Cards";
             this.replaceCards.UseVisualStyleBackColor = false;
@@ -246,9 +243,10 @@ namespace AwesomePokerGameSln {
             // foldButton
             // 
             this.foldButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.foldButton.Location = new System.Drawing.Point(830, 662);
+            this.foldButton.Location = new System.Drawing.Point(553, 430);
+            this.foldButton.Margin = new System.Windows.Forms.Padding(2);
             this.foldButton.Name = "foldButton";
-            this.foldButton.Size = new System.Drawing.Size(168, 49);
+            this.foldButton.Size = new System.Drawing.Size(112, 32);
             this.foldButton.TabIndex = 18;
             this.foldButton.Text = "Fold";
             this.foldButton.UseVisualStyleBackColor = false;
@@ -258,20 +256,90 @@ namespace AwesomePokerGameSln {
             // 
             this.pictureBox6.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.Deck;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(1176, 18);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(784, 12);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(150, 231);
+            this.pictureBox6.Size = new System.Drawing.Size(100, 150);
             this.pictureBox6.TabIndex = 19;
             this.pictureBox6.TabStop = false;
             // 
+            // placeBet
+            // 
+            this.placeBet.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.placeBet.Location = new System.Drawing.Point(32, 568);
+            this.placeBet.Name = "placeBet";
+            this.placeBet.Size = new System.Drawing.Size(112, 32);
+            this.placeBet.TabIndex = 20;
+            this.placeBet.Text = "Place Bet";
+            this.placeBet.UseVisualStyleBackColor = false;
+            this.placeBet.Click += new System.EventHandler(this.placeBetButton_Click);
+            // 
+            // resetBet
+            // 
+            this.resetBet.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.resetBet.Location = new System.Drawing.Point(161, 568);
+            this.resetBet.Name = "resetBet";
+            this.resetBet.Size = new System.Drawing.Size(112, 32);
+            this.resetBet.TabIndex = 21;
+            this.resetBet.Text = "Reset Bet";
+            this.resetBet.UseVisualStyleBackColor = false;
+            // 
+            // betNum
+            // 
+            this.betNum.BackColor = System.Drawing.Color.Transparent;
+            this.betNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betNum.Location = new System.Drawing.Point(161, 525);
+            this.betNum.Name = "betNum";
+            this.betNum.Size = new System.Drawing.Size(112, 40);
+            this.betNum.TabIndex = 22;
+            this.betNum.Text = "label1";
+            this.betNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // poolNum
+            // 
+            this.poolNum.BackColor = System.Drawing.Color.Transparent;
+            this.poolNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.poolNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.poolNum.Location = new System.Drawing.Point(890, 116);
+            this.poolNum.Name = "poolNum";
+            this.poolNum.Size = new System.Drawing.Size(122, 46);
+            this.poolNum.TabIndex = 23;
+            this.poolNum.Text = "label1";
+            this.poolNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // poolLabel
+            // 
+            this.poolLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.poolLabel.Location = new System.Drawing.Point(890, 96);
+            this.poolLabel.Name = "poolLabel";
+            this.poolLabel.Size = new System.Drawing.Size(122, 20);
+            this.poolLabel.TabIndex = 24;
+            this.poolLabel.Text = "Pool:";
+            this.poolLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // betLabel
+            // 
+            this.betLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betLabel.Location = new System.Drawing.Point(161, 505);
+            this.betLabel.Name = "betLabel";
+            this.betLabel.Size = new System.Drawing.Size(112, 20);
+            this.betLabel.TabIndex = 25;
+            this.betLabel.Text = "Amount to Bet:";
+            this.betLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // FrmPlaygame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1563, 765);
+            this.ClientSize = new System.Drawing.Size(1081, 612);
+            this.Controls.Add(this.betLabel);
+            this.Controls.Add(this.poolLabel);
+            this.Controls.Add(this.poolNum);
+            this.Controls.Add(this.betNum);
+            this.Controls.Add(this.resetBet);
+            this.Controls.Add(this.placeBet);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.foldButton);
             this.Controls.Add(this.replaceCards);
@@ -291,7 +359,6 @@ namespace AwesomePokerGameSln {
             this.Controls.Add(this.picCard4);
             this.Controls.Add(this.picCard3);
             this.Controls.Add(this.picCard1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPlaygame";
             this.Text = "FrmPlaygame";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPlaygame_FormClosed);
@@ -343,5 +410,11 @@ namespace AwesomePokerGameSln {
         private System.Windows.Forms.Button replaceCards;
         private System.Windows.Forms.Button foldButton;
 		private System.Windows.Forms.PictureBox pictureBox6;
-	}
+        private System.Windows.Forms.Button placeBet;
+        private System.Windows.Forms.Button resetBet;
+        private System.Windows.Forms.Label betNum;
+        private System.Windows.Forms.Label poolNum;
+        private System.Windows.Forms.Label poolLabel;
+        private System.Windows.Forms.Label betLabel;
+    }
 }

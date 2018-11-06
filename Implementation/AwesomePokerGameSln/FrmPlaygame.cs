@@ -21,6 +21,8 @@ namespace AwesomePokerGameSln
         private Hand playerHand;
         private Hand dealerHand;
         private List<PictureBox> selectedCards = new List<PictureBox>();
+        private int betVal = 100;
+        private int poolVal;
 
         public FrmPlaygame()
         {
@@ -294,8 +296,6 @@ namespace AwesomePokerGameSln
             }
         }
 
-
-
         private void TypeBox_Leave(object sender, EventArgs e)
         {
             if (typeBox.Text == "")
@@ -305,6 +305,28 @@ namespace AwesomePokerGameSln
             }
         }
 
+        ///////////////////////////
+        // Betting
+        ///////////////////////////
+        
+        // Place bet
+        private void placeBetButton_Click(object sender, EventArgs e)
+        {
+            if (betVal > 0)
+            {
+                chatBox.Items.Add("Player added $100 to pool");
+                poolVal = poolVal + betVal;
+                betNum.Text = poolVal.ToString();
+                betNum.Refresh();
+                betVal = 0;
+            }
+
+        }
+
+        private void resetBetButton_Click(object sender, EventArgs e)
+        {
+
+        }
 
         ////////////////////
         // Backend Handlers
@@ -321,6 +343,16 @@ namespace AwesomePokerGameSln
             deck = new Deck();
             DealCards();
             redealButton.Enabled = false;
+        }
+
+        private void playerHandType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
