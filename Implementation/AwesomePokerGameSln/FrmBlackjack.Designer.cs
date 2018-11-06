@@ -31,25 +31,27 @@ namespace AwesomePokerGameSln
         private void InitializeComponentBlackjack()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBlackjack));
-            this.picCard1 = new System.Windows.Forms.PictureBox();
-            this.picCard3 = new System.Windows.Forms.PictureBox();
-            this.picCard4 = new System.Windows.Forms.PictureBox();
-            this.picCard5 = new System.Windows.Forms.PictureBox();
-            this.picCard2 = new System.Windows.Forms.PictureBox();
-            this.redealButton = new System.Windows.Forms.Button();
+            this.picCard1       = new System.Windows.Forms.PictureBox();
+            this.picCard3       = new System.Windows.Forms.PictureBox();
+            this.picCard4       = new System.Windows.Forms.PictureBox();
+            this.picCard5       = new System.Windows.Forms.PictureBox();
+            this.picCard2       = new System.Windows.Forms.PictureBox();
+            this.redealButton   = new System.Windows.Forms.Button();
+            this.hitButton      = new System.Windows.Forms.Button();
+            this.stayButton      = new System.Windows.Forms.Button();
             this.playerHandType = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.chatBox = new System.Windows.Forms.ListBox();
-            this.typeBox = new System.Windows.Forms.TextBox();
+            this.pictureBox1    = new System.Windows.Forms.PictureBox();
+            this.pictureBox2    = new System.Windows.Forms.PictureBox();
+            this.pictureBox3    = new System.Windows.Forms.PictureBox();
+            this.pictureBox4    = new System.Windows.Forms.PictureBox();
+            this.pictureBox5    = new System.Windows.Forms.PictureBox();
+            this.chatBox        = new System.Windows.Forms.ListBox();
+            this.typeBox        = new System.Windows.Forms.TextBox();
             this.chatSendButton = new System.Windows.Forms.Button();
             this.dealerHandType = new System.Windows.Forms.Label();
-            this.replaceCards = new System.Windows.Forms.Button();
-            this.foldButton = new System.Windows.Forms.Button();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            //this.replaceCards = new System.Windows.Forms.Button();
+            this.foldButton     = new System.Windows.Forms.Button();
+            this.pictureBox6    = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -129,6 +131,30 @@ namespace AwesomePokerGameSln
             this.redealButton.Text = "New Game";
             this.redealButton.UseVisualStyleBackColor = false;
             this.redealButton.Click += new System.EventHandler(this.redealButton_Click);
+            // 
+            // hitButton
+            // 
+            this.hitButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.hitButton.Location = new System.Drawing.Point(484, 592);
+            this.hitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.hitButton.Name = "hitButton";
+            this.hitButton.Size = new System.Drawing.Size(268, 132);
+            this.hitButton.TabIndex = 6;
+            this.hitButton.Text = "New Game";
+            this.hitButton.UseVisualStyleBackColor = false;
+            this.hitButton.Click += new System.EventHandler(this.hitButton_Click);
+            // 
+            // stayButton
+            // 
+            this.stayButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.stayButton.Location = new System.Drawing.Point(484, 642);
+            this.stayButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.stayButton.Name = "stayButton";
+            this.stayButton.Size = new System.Drawing.Size(268, 132);
+            this.stayButton.TabIndex = 6;
+            this.stayButton.Text = "New Game";
+            this.stayButton.UseVisualStyleBackColor = false;
+            this.stayButton.Click += new System.EventHandler(this.stayButton_Click);
             // 
             // playerHandType
             // 
@@ -239,14 +265,14 @@ namespace AwesomePokerGameSln
             // 
             // replaceCards
             // 
-            this.replaceCards.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.replaceCards.Location = new System.Drawing.Point(830, 589);
-            this.replaceCards.Name = "replaceCards";
-            this.replaceCards.Size = new System.Drawing.Size(168, 52);
-            this.replaceCards.TabIndex = 17;
-            this.replaceCards.Text = "Re-Draw Cards";
-            this.replaceCards.UseVisualStyleBackColor = false;
-            this.replaceCards.Click += new System.EventHandler(this.ReplaceSelectedCards);
+            //this.replaceCards.BackColor = System.Drawing.Color.CornflowerBlue;
+            //this.replaceCards.Location = new System.Drawing.Point(830, 589);
+            //this.replaceCards.Name = "replaceCards";
+            //this.replaceCards.Size = new System.Drawing.Size(168, 52);
+            //this.replaceCards.TabIndex = 17;
+            //this.replaceCards.Text = "Re-Draw Cards";
+            //this.replaceCards.UseVisualStyleBackColor = false;
+            //this.replaceCards.Click += new System.EventHandler(this.ReplaceSelectedCards);
             // 
             // foldButton
             // 
@@ -279,7 +305,7 @@ namespace AwesomePokerGameSln
             this.ClientSize = new System.Drawing.Size(1563, 765);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.foldButton);
-            this.Controls.Add(this.replaceCards);
+            //this.Controls.Add(this.replaceCards);
             this.Controls.Add(this.dealerHandType);
             this.Controls.Add(this.chatSendButton);
             this.Controls.Add(this.typeBox);
@@ -291,6 +317,8 @@ namespace AwesomePokerGameSln
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.playerHandType);
             this.Controls.Add(this.redealButton);
+            this.Controls.Add(this.hitButton);
+            this.Controls.Add(this.stayButton);
             this.Controls.Add(this.picCard2);
             this.Controls.Add(this.picCard5);
             this.Controls.Add(this.picCard4);
@@ -299,8 +327,8 @@ namespace AwesomePokerGameSln
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmBlackjack";
             this.Text = "FrmBlackjack";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPlaygame_FormClosed);
-            this.Load += new System.EventHandler(this.FrmPlaygame_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBlackjack_FormClosed);
+            this.Load += new System.EventHandler(this.FrmBlackjack_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).EndInit();
@@ -335,6 +363,8 @@ namespace AwesomePokerGameSln
         private System.Windows.Forms.PictureBox picCard5;
         private System.Windows.Forms.PictureBox picCard2;
         private System.Windows.Forms.Button redealButton;
+        private System.Windows.Forms.Button hitButton;
+        private System.Windows.Forms.Button stayButton;
         private System.Windows.Forms.Label playerHandType;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -345,7 +375,7 @@ namespace AwesomePokerGameSln
         private System.Windows.Forms.TextBox typeBox;
         private System.Windows.Forms.Button chatSendButton;
         private System.Windows.Forms.Label dealerHandType;
-        private System.Windows.Forms.Button replaceCards;
+        //private System.Windows.Forms.Button replaceCards;
         private System.Windows.Forms.Button foldButton;
         private System.Windows.Forms.PictureBox pictureBox6;
     }

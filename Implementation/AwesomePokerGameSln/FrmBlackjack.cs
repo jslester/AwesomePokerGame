@@ -36,14 +36,14 @@ namespace AwesomePokerGameSln
             }
         }
 
-        private void dealCards()
+        private void DealCards()
         {
-            deck.shuffleDeck();
+            deck.ShuffleDeck();
             Tuple<int, int>[] cards = new Tuple<int, int>[5];
             int index = 0;
             foreach (PictureBox playerCardPic in playerCardPics)
             {
-                CardType card = deck.nextCard();
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 if(index>1)
@@ -57,7 +57,7 @@ namespace AwesomePokerGameSln
             index = 0;
             foreach (PictureBox dealerCardPic in dealerCardPics)
             {
-                CardType card = deck.nextCard();
+                CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
                 if (index > 1)
@@ -132,7 +132,7 @@ namespace AwesomePokerGameSln
 
             for (int k = 0; k < 5; k++)
             {
-                if (playererCards[k] < 9)
+                if (playerCards[k] < 9)
                     playerCards[k] += 2;
                 else if (playerCards[k] >= 9 && playerCards[k] < 12)
                     playerCards[k] = 10;
@@ -149,11 +149,11 @@ namespace AwesomePokerGameSln
             }
             else
             {
-                while (playerBusts == false && (hit.Enabled == true || stay.Enabled == false)
+                while (playerBusts == false && (hitButton.Enabled == true || stayButton.Enabled == false))
                 {
                     if(playerCount >= 21)
                     {
-                        hit.Enabled = false;
+                        hitButton.Enabled = false;
                     }
                 }
                 
@@ -186,7 +186,7 @@ namespace AwesomePokerGameSln
         private void FrmBlackjack_Load(object sender, EventArgs e)
         {
             deck = new Deck();
-            dealCards();
+            DealCards();
         }
         //Need to add a way to disable clicking cards after new hand is dealt
         //Need to figure out if can stop from pressing more than once. Maybe change/ check the y value?
@@ -195,6 +195,21 @@ namespace AwesomePokerGameSln
         {
             chatBox.Items.Add("Me: " + typeBox.Text);
             typeBox.Text = "";
+        }
+
+        // Start a new game, reset all vals
+        private void redealButton_Click(object sender, EventArgs e)
+        {
+
+            chatBox.Items.Add("Dealer: GoodLuck!");
+            redealButton.Enabled = false;
+            foldButton.Enabled = true;
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                singlebox.Enabled = true;
+            }
+
+            DealCards();
         }
 
         private void cardClickHandler(object sender, EventArgs e)
@@ -212,6 +227,11 @@ namespace AwesomePokerGameSln
         }
 
         private void hitButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void stayButton_Click(object sender, EventArgs e)
         {
             
         }
