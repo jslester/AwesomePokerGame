@@ -29,6 +29,12 @@ namespace AwesomePokerGameSln
         private bool playerWins;
         private bool dealerWins;
         private int playerRevealedCount;
+        private int betVal = 0;
+        private int walletVal = 0;
+        private int poolVal = 0;
+        Random rand = new Random();
+        int dealBet;
+
 
         public FrmBlackjack()
         {
@@ -327,6 +333,147 @@ namespace AwesomePokerGameSln
             }
         }
 
-        
+        /// Betting
+        // Place bet
+        private void placeBetButton_Click(object sender, EventArgs e)
+        {
+            chatBox.Items.Add(string.Format("Player added ${0} to pool", betVal));
+            poolVal = poolVal + betVal;
+            poolNum.Text = "$" + poolVal.ToString();
+            poolNum.Update();
+            betVal = 0;
+            betNum.Text = "$" + betVal.ToString();
+            betNum.Update();
+        }
+
+        private void resetBetButton_Click(object sender, EventArgs e)
+        {
+            walletVal += betVal;
+            walletNum.Text = "$" + walletVal.ToString();
+            walletNum.Update();
+
+            betVal = 0;
+            betNum.Text = "$" + betVal.ToString();
+            betNum.Update();
+        }
+        // Winning Hand 
+
+        // Clicking chips
+        private void fiveChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 5 >= 0)
+            {
+                walletVal -= 5;
+                betVal += 5;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void tenChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 10 >= 0)
+            {
+                walletVal -= 10;
+                betVal += 10;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void twentyFiveChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 25 >= 0)
+            {
+                walletVal -= 25;
+                betVal += 25;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void fiftyChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 50 >= 0)
+            {
+                walletVal -= 50;
+                betVal += 50;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void hundredChip_Click(object sender, EventArgs e)
+        {
+            if (walletVal > 0 && walletVal - 100 >= 0)
+            {
+                walletVal -= 100;
+                betVal += 100;
+                walletNum.Text = "$" + walletVal.ToString();
+                walletNum.Update();
+                betNum.Text = "$" + betVal.ToString();
+                betNum.Update();
+            }
+            else
+            {
+                chatBox.Items.Add("Insufficient Funds. Please add more.");
+            }
+        }
+
+        private void addFundsChip_Click(object sender, EventArgs e)
+        {
+            AddFunds addFunds = new AddFunds();
+            addFunds.ShowDialog();
+            int addedFunds = addFunds.value;
+            switch (addedFunds)
+            {
+                case 100:
+                    walletVal += 100;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 500:
+                    walletVal += 500;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                case 1000:
+                    walletVal += 1000;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+                default:
+                    walletVal += 0;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    walletNum.Update();
+                    break;
+            }
+
+        }
+
     }
 }
