@@ -225,9 +225,25 @@ namespace AwesomePokerGameSln
                 poolNum.Text = "$" + poolVal.ToString();
             }
             else if (playerValue == dealerValue)
-                chatBox.Items.Add("It's a tie!");
-            else if (playerWins && dealerWins)
+            {
                 chatBox.Items.Add("Dealer: It's a tie!");
+                // pool gets split between players
+                walletVal += poolVal / 2;
+                walletNum.Text = "$" + walletVal.ToString();
+                chatBox.Items.Add(string.Format("Both players awarded ${0}", (poolVal / 2).ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
+            else if (playerWins && dealerWins)
+            {
+                chatBox.Items.Add("Dealer: It's a tie!");
+                // pool gets split between players
+                walletVal += poolVal/2;
+                walletNum.Text = "$" + walletVal.ToString();
+                chatBox.Items.Add(string.Format("Both players awarded ${0}", (poolVal/2).ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
             else if (dealerWins || playerValue > 21)
             {
                 chatBox.Items.Add("Dealer: I win!");
