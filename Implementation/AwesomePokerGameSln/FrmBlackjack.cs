@@ -316,6 +316,11 @@ namespace AwesomePokerGameSln
             hitButton.Enabled = true;
             stayButton.Enabled = true;
             placeBetButton.Enabled = true;
+            fiveChip.Enabled = true;
+            tenChip.Enabled = true;
+            twentyFiveChip.Enabled = true;
+            fiftyChip.Enabled = true;
+            hundredChip.Enabled = true;
 
             DealCards();
             SetBoard();
@@ -330,6 +335,11 @@ namespace AwesomePokerGameSln
             }
 
             placeBetButton.Enabled = false;
+            fiveChip.Enabled = false;
+            tenChip.Enabled = false;
+            twentyFiveChip.Enabled = false;
+            fiftyChip.Enabled = false;
+            hundredChip.Enabled = false;
 
             if (playerNums[playerRevealedCount] == 11)
             {
@@ -372,6 +382,19 @@ namespace AwesomePokerGameSln
 
         private void stayButton_Click(object sender, EventArgs e)
         {
+            if (poolVal == 0 || poolVal - dealBet == 0)
+            {
+                chatBox.Items.Add("Please Place bet first");
+                return;
+            }
+
+            placeBetButton.Enabled = false;
+            fiveChip.Enabled = false;
+            tenChip.Enabled = false;
+            twentyFiveChip.Enabled = false;
+            fiftyChip.Enabled = false;
+            hundredChip.Enabled = false;
+
             DealerPlay();
         }
 
