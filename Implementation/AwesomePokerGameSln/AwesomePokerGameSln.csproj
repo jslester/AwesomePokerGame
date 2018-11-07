@@ -48,16 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Code\CardImageHelper.cs" />
     <Compile Include="AddFunds.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddFunds.Designer.cs">
       <DependentUpon>AddFunds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shit1.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmBlackjack.cs">
       <SubType>Form</SubType>
@@ -110,9 +106,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Shit2.cs">
-      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -327,9 +320,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\blacklistWords.txt" />
+    <None Include="Resources\TableFabric.jpg" />
     <None Include="Resources\pokerchip.png" />
     <None Include="Resources\pokerChip.bmp" />
     <None Include="Resources\blacklistWords.txt.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

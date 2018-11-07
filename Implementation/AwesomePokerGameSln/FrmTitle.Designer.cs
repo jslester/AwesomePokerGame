@@ -39,10 +39,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(652, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(435, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(592, 135);
+            this.label1.Size = new System.Drawing.Size(396, 91);
             this.label1.TabIndex = 0;
             this.label1.Text = "Awesome";
             // 
@@ -50,10 +49,9 @@
             // 
             this.btnNewGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(86, 722);
-            this.btnNewGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNewGame.Location = new System.Drawing.Point(57, 469);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(316, 134);
+            this.btnNewGame.Size = new System.Drawing.Size(211, 87);
             this.btnNewGame.TabIndex = 1;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
@@ -63,10 +61,9 @@
             // 
             this.btnViewRuleBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnViewRuleBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewRuleBook.Location = new System.Drawing.Point(561, 722);
-            this.btnViewRuleBook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnViewRuleBook.Location = new System.Drawing.Point(374, 469);
             this.btnViewRuleBook.Name = "btnViewRuleBook";
-            this.btnViewRuleBook.Size = new System.Drawing.Size(357, 134);
+            this.btnViewRuleBook.Size = new System.Drawing.Size(238, 87);
             this.btnViewRuleBook.TabIndex = 2;
             this.btnViewRuleBook.Text = "View Rule Book";
             this.btnViewRuleBook.UseVisualStyleBackColor = false;
@@ -76,10 +73,9 @@
             // 
             this.btnQuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(1070, 722);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnQuit.Location = new System.Drawing.Point(713, 469);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(316, 134);
+            this.btnQuit.Size = new System.Drawing.Size(211, 87);
             this.btnQuit.TabIndex = 3;
             this.btnQuit.Text = "Quit Game";
             this.btnQuit.UseVisualStyleBackColor = false;
@@ -91,10 +87,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 100F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(18, 397);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(644, 226);
+            this.label2.Size = new System.Drawing.Size(435, 153);
             this.label2.TabIndex = 4;
             this.label2.Text = "Game";
             // 
@@ -102,10 +97,9 @@
             // 
             this.picRulebook.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.rule_book;
             this.picRulebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picRulebook.Location = new System.Drawing.Point(18, 14);
-            this.picRulebook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picRulebook.Location = new System.Drawing.Point(12, 9);
             this.picRulebook.Name = "picRulebook";
-            this.picRulebook.Size = new System.Drawing.Size(1389, 666);
+            this.picRulebook.Size = new System.Drawing.Size(926, 433);
             this.picRulebook.TabIndex = 5;
             this.picRulebook.TabStop = false;
             this.picRulebook.Visible = false;
@@ -117,19 +111,20 @@
             this.comboBox1.Items.AddRange(new object[] {
             "General Poker",
             "Blackjack"});
-            this.comboBox1.Location = new System.Drawing.Point(86, 689);
+            this.comboBox1.Location = new System.Drawing.Point(57, 448);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(316, 28);
+            this.comboBox1.Size = new System.Drawing.Size(212, 21);
             this.comboBox1.TabIndex = 6;
             // 
             // FrmTitle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = global::AwesomePokerGameSln.Properties.Resources.title_screen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1425, 862);
+            this.ClientSize = new System.Drawing.Size(950, 560);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.picRulebook);
             this.Controls.Add(this.label2);
@@ -137,8 +132,8 @@
             this.Controls.Add(this.btnViewRuleBook);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmTitle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Awesome Poker Game";
             ((System.ComponentModel.ISupportInitialize)(this.picRulebook)).EndInit();
             this.ResumeLayout(false);

@@ -229,10 +229,11 @@ namespace AwesomePokerGameSln {
             // dealerHandType
             // 
             this.dealerHandType.AutoSize = true;
-            this.dealerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dealerHandType.BackColor = System.Drawing.Color.Transparent;
+            this.dealerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.dealerHandType.Location = new System.Drawing.Point(80, 172);
             this.dealerHandType.Name = "dealerHandType";
-            this.dealerHandType.Size = new System.Drawing.Size(99, 33);
+            this.dealerHandType.Size = new System.Drawing.Size(108, 37);
             this.dealerHandType.TabIndex = 16;
             this.dealerHandType.Text = "label2";
             // 
@@ -339,10 +340,11 @@ namespace AwesomePokerGameSln {
             // playerHandType
             // 
             this.playerHandType.AutoSize = true;
-            this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerHandType.Location = new System.Drawing.Point(80, 397);
+            this.playerHandType.BackColor = System.Drawing.Color.Transparent;
+            this.playerHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.playerHandType.Location = new System.Drawing.Point(77, 385);
             this.playerHandType.Name = "playerHandType";
-            this.playerHandType.Size = new System.Drawing.Size(99, 33);
+            this.playerHandType.Size = new System.Drawing.Size(108, 37);
             this.playerHandType.TabIndex = 7;
             this.playerHandType.Text = "label2";
             // 
