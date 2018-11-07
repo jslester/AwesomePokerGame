@@ -211,7 +211,8 @@ namespace AwesomePokerGameSln
                 chatBox.Items.Add("Dealer: You win!");
             else if (playerValue < dealerValue)
                 chatBox.Items.Add("Dealer: I win!");
-            
+            chatBox.TopIndex = chatBox.Items.Count - 1;
+
 
             redealButton.Enabled = true;
             hitButton.Enabled = false;
@@ -236,7 +237,9 @@ namespace AwesomePokerGameSln
         private void chatSendButton_Click(object sender, EventArgs e)
         {
             chatBox.Items.Add("Me: " + typeBox.Text);
-            typeBox.Text = "";
+            typeBox.Text = "Enter a message:";
+            typeBox.ForeColor = Color.Gray;
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         // Start a new game, reset all vals
@@ -249,6 +252,7 @@ namespace AwesomePokerGameSln
 
             DealCards();
             SetBoard();
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void hitButton_Click(object sender, EventArgs e)
