@@ -38,6 +38,7 @@ namespace AwesomePokerGameSln.Code
             return cards[index];
         }
 
+        // Specific to Five Card Draw
         public List<CardType> GetTrash()
         {
             return trashCards;
