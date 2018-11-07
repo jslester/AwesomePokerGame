@@ -67,7 +67,7 @@ namespace AwesomePokerGameSln
             this.betLabel = new System.Windows.Forms.Label();
             this.betNum = new System.Windows.Forms.Label();
             this.resetBet = new System.Windows.Forms.Button();
-            this.placeBet = new System.Windows.Forms.Button();
+            this.placeBetButton = new System.Windows.Forms.Button();
             this.poolLabel = new System.Windows.Forms.Label();
             this.poolNum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
@@ -483,16 +483,16 @@ namespace AwesomePokerGameSln
             this.resetBet.UseVisualStyleBackColor = false;
             this.resetBet.Click += new System.EventHandler(this.resetBetButton_Click);
             // 
-            // placeBet
+            // placeBetButton
             // 
-            this.placeBet.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.placeBet.Location = new System.Drawing.Point(566, 525);
-            this.placeBet.Name = "placeBet";
-            this.placeBet.Size = new System.Drawing.Size(112, 32);
-            this.placeBet.TabIndex = 40;
-            this.placeBet.Text = "Place Bet";
-            this.placeBet.UseVisualStyleBackColor = false;
-            this.placeBet.Click += new System.EventHandler(this.placeBetButton_Click);
+            this.placeBetButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.placeBetButton.Location = new System.Drawing.Point(566, 525);
+            this.placeBetButton.Name = "placeBetButton";
+            this.placeBetButton.Size = new System.Drawing.Size(112, 32);
+            this.placeBetButton.TabIndex = 40;
+            this.placeBetButton.Text = "Place Bet";
+            this.placeBetButton.UseVisualStyleBackColor = false;
+            this.placeBetButton.Click += new System.EventHandler(this.placeBetButton_Click);
             // 
             // poolLabel
             // 
@@ -542,7 +542,7 @@ namespace AwesomePokerGameSln
             this.Controls.Add(this.betLabel);
             this.Controls.Add(this.betNum);
             this.Controls.Add(this.resetBet);
-            this.Controls.Add(this.placeBet);
+            this.Controls.Add(this.placeBetButton);
             this.Controls.Add(this.DeckImg);
             this.Controls.Add(this.dealerHandType);
             this.Controls.Add(this.chatSendButton);
@@ -640,7 +640,7 @@ namespace AwesomePokerGameSln
         private System.Windows.Forms.Label betLabel;
         private System.Windows.Forms.Label betNum;
         private System.Windows.Forms.Button resetBet;
-        private System.Windows.Forms.Button placeBet;
+        private System.Windows.Forms.Button placeBetButton;
         private System.Windows.Forms.Label poolLabel;
         private System.Windows.Forms.Label poolNum;
     }

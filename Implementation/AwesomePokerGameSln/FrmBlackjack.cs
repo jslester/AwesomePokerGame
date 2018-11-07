@@ -88,6 +88,14 @@ namespace AwesomePokerGameSln
             dealerHand = new Hand(cards);
 
             SetBoard();
+
+            // dealer makes his bet
+            chatBox.Items.Add("Dealer: Place your bets!");
+            dealBet = 5 * rand.Next(20, 200);
+            poolVal = +dealBet;
+            poolNum.Text = "$" + poolVal.ToString();
+            chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
+            poolNum.Update();
         }
 
         private void DealerPlay()
@@ -291,28 +299,21 @@ namespace AwesomePokerGameSln
             redealButton.Enabled = false;
             hitButton.Enabled = true;
             stayButton.Enabled = true;
+            placeBetButton.Enabled = true;
 
             DealCards();
             SetBoard();
-
-            // dealer makes his bet
-            chatBox.Items.Add("Dealer: Place your bets!");
-            dealBet = 5 * rand.Next(20, 200);
-            poolVal = +dealBet;
-            poolNum.Text = "$" + poolVal.ToString();
-            chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
-            poolNum.Update();
         }
 
         private void hitButton_Click(object sender, EventArgs e)
         {
-            if(poolVal == 0)
+            if(poolVal == 0 || poolVal-dealBet == 0)
             {
                 chatBox.Items.Add("Please Place bet first");
                 return;
             }
 
-            placeBet.Enabled = false;
+            placeBetButton.Enabled = false;
 
             if (playerNums[playerRevealedCount] == 11)
             {
