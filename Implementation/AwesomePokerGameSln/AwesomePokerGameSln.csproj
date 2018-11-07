@@ -56,6 +56,15 @@
     <Compile Include="AddFunds.Designer.cs">
       <DependentUpon>AddFunds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shit1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBlackjack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBlackjack.Designer.cs">
+      <DependentUpon>FrmBlackjack.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPlaygame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddFunds.resx">
       <DependentUpon>AddFunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBlackjack.resx">
+      <DependentUpon>FrmBlackjack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPlaygame.resx">
       <DependentUpon>FrmPlaygame.cs</DependentUpon>
@@ -99,9 +111,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="FrmBlackjack.cs" />
-    <Compile Include="FrmBlackjack.Designer.cs" />
-    <None Include="FrmBlackjack.resx" />
+    <Compile Include="Shit2.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

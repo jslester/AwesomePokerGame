@@ -13,7 +13,7 @@ using CardType = System.Tuple<int, int>;
 
 namespace AwesomePokerGameSln
 {
-    public partial class FrmBlackjack : Form
+    public partial class FrmShit : Form
     {
         private Deck deck;
         private PictureBox[] playerCardPics;
@@ -24,15 +24,15 @@ namespace AwesomePokerGameSln
         private int[] dealerNums;
         private int playerValue;
         private int dealerValue;
-        private int playerHighAce;
-        private int dealerHighAce;
+        private bool playerHighAce;
+        private bool dealerHighAce;
         private bool playerWins;
         private bool dealerWins;
         private int playerRevealedCount;
 
-        public FrmBlackjack()
+        public FrmShit()
         {
-            InitializeComponent();
+            InitializeComponentBlackjack();
             playerCardPics = new PictureBox[5];
             for (int c = 1; c <= 5; c++)
             {
@@ -43,7 +43,6 @@ namespace AwesomePokerGameSln
             {
                 dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
             }
-            redealButton.Enabled = false;
         }
 
         private void DealCards()
@@ -56,7 +55,7 @@ namespace AwesomePokerGameSln
                 CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
-                if (index > 2)
+                if(index>1)
                 {
                     playerCardPic.Visible = false;
                 }
@@ -84,49 +83,43 @@ namespace AwesomePokerGameSln
         private void DealerPlay()
         {
             //Dealer logic
+            dealerValue = 0;
+            dealerHighAce = false;
             
-            dealerCardPics[1].Visible = true;
 
             //Dealer logic. If the first two cards add up to less than 17, hit until they do.
             int i = 2;
-            if (dealerHighAce > 0 && dealerValue > 21)
+            if (dealerHighAce == true && dealerValue > 21)
             {
-                dealerHighAce--;
+                dealerHighAce = false;
                 dealerValue -= 10;
+            }
+            if (dealerValue == 21)
+            {
+                dealerWins = true;
             }
             while (dealerValue < 17)
             {
-                if (i == 5)
-                    break;
                 dealerValue += dealerNums[i];
-
-                if (dealerNums[i] == 11)
-                    dealerHighAce++;
-
                 dealerCardPics[i].Visible = true;
-                if (dealerHighAce > 0 && dealerValue > 21)
+                if (dealerHighAce == true && dealerValue > 21)
                 {
-                    dealerHighAce--;
+                    dealerHighAce = false;
                     dealerValue -= 10;
                 }
                 i++;
             }
-            if (dealerValue == 21)
-                dealerWins = true;
-
             EvaluateGameState();
         }
 
         private void SetBoard()
         {
-            dealerValue = 0;
             dealerWins = false;
             dealerNums = new int[5];
-            dealerHighAce = 0;
 
             for (int j = 0; j < dealerNums.Length; j++)
             {
-                dealerNums[j] = dealerHand.GetCardI(j).Item1;
+                dealerNums[j] = dealerHand.GetCardI(j).Item2;
             }
 
             //Replace array values for faces with actual values
@@ -140,30 +133,20 @@ namespace AwesomePokerGameSln
                 {
                     //Assume high ace until proven otherwise
                     dealerNums[j] = 11;
+                    dealerHighAce = true;
                 }
             }
             dealerValue += (dealerNums[0] + dealerNums[1]);
 
-            if (dealerNums[0] == 11)
-                dealerHighAce++;
-            if (dealerNums[1] == 11)
-                dealerHighAce++;
-
-            if (dealerValue > 21 && dealerHighAce > 0)
-            {
-                dealerHighAce--;
-                dealerValue -= 10;
-            }
-
             //Player logic. 
             playerValue = 0;
-            playerHighAce = 0;
+            playerHighAce = false;
             playerWins = false;
             playerNums = new int[5];
 
-            for (int j = 0; j < playerNums.Length; j++)
+            for (int j=0; j<playerNums.Length; j++)
             {
-                playerNums[j] = playerHand.GetCardI(j).Item1;
+                playerNums[j] = playerHand.GetCardI(j).Item2;
             }
 
             for (int k = 0; k < 5; k++)
@@ -175,54 +158,42 @@ namespace AwesomePokerGameSln
                 else
                 {
                     playerNums[k] = 11;
-                    playerHighAce++;
+                    playerHighAce = true;
                 }
             }
             playerValue += (playerNums[0] + playerNums[1]);
             playerRevealedCount = 2;
-            if (playerValue == 21)
+            if(playerValue == 21)
             {
                 playerWins = true;
             }
-            else if (playerValue >= 21)
+            else if(playerValue >= 21)
             {
                 hitButton.Enabled = false;
-                stayButton.Enabled = false;
             }
 
             if (!hitButton.Enabled)
-                DealerPlay();
+                EvaluateGameState();
         }
 
         private void EvaluateGameState()
         {
-
-            if (playerRevealedCount == 5 && playerValue <= 21)
-                chatBox.Items.Add("Dealer: You win!");
-            else if (playerValue == dealerValue)
-                chatBox.Items.Add("It's a tie!");
-            else if (playerWins && dealerWins)
+            
+            if (playerWins && dealerWins)
                 chatBox.Items.Add("Dealer: It's a tie!");
             else if (dealerWins || playerValue > 21)
                 chatBox.Items.Add("Dealer: I win!");
             else if (playerWins || dealerValue > 21)
                 chatBox.Items.Add("Dealer: You win!");
-            else if (playerValue > dealerValue)
-                chatBox.Items.Add("Dealer: You win!");
-            else if (playerValue < dealerValue)
-                chatBox.Items.Add("Dealer: I win!");
             
-
-            redealButton.Enabled = true;
-            hitButton.Enabled = false;
-            stayButton.Enabled = false;
 
         }
 
 
         private void FrmBlackjack_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            foreach (Form f in Application.OpenForms)
+                f.Close();
         }
 
         private void FrmBlackjack_Load(object sender, EventArgs e)
@@ -242,27 +213,30 @@ namespace AwesomePokerGameSln
         // Start a new game, reset all vals
         private void redealButton_Click(object sender, EventArgs e)
         {
+
             chatBox.Items.Add("Dealer: GoodLuck!");
             redealButton.Enabled = false;
-            hitButton.Enabled = true;
-            stayButton.Enabled = true;
+            foldButton.Enabled = true;
+            foreach (PictureBox singlebox in playerCardPics)
+            {
+                singlebox.Enabled = true;
+            }
 
             DealCards();
-            SetBoard();
         }
 
         private void hitButton_Click(object sender, EventArgs e)
         {
             if (playerNums[playerRevealedCount] == 11)
             {
-                playerHighAce++;
+                playerHighAce = true;
             }
 
             playerValue += playerNums[playerRevealedCount];
 
-            if (playerHighAce > 0 && playerValue > 21)
+            if (playerHighAce && playerValue > 21)
             {
-                playerHighAce--;
+                playerHighAce = false;
                 playerValue -= 10;
             }
             if (playerValue == 21)
@@ -270,31 +244,22 @@ namespace AwesomePokerGameSln
                 playerWins = true;
             }
             playerCardPics[playerRevealedCount].Visible = true;
-
-            playerRevealedCount++;
-            if (playerValue > 21 || playerRevealedCount == 5)
+            
+            if (playerValue > 21)
             {
                 hitButton.Enabled = false;
-                stayButton.Enabled = false;
-                
-                if (playerValue > 21)
-                {
-                    playerWins = false;
-                    EvaluateGameState();
-                    return;
-                }
             }
-            
+            playerRevealedCount++;
 
             if (!hitButton.Enabled)
             {
-                DealerPlay();
+                EvaluateGameState();
             }
         }
 
         private void stayButton_Click(object sender, EventArgs e)
         {
-            DealerPlay();
+            EvaluateGameState();   
         }
 
         private void TypeBox_Enter(object sender, EventArgs e)
@@ -326,7 +291,5 @@ namespace AwesomePokerGameSln
                 typeBox.ForeColor = Color.Gray;
             }
         }
-
-        
     }
 }
