@@ -70,7 +70,7 @@ namespace AwesomePokerGameSln
                 CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
-                dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+                dealerCardPic.BackgroundImage = AwesomePokerGameSln.Properties.Resources.Deck;
             }
             dealerHand = new Hand(cards);
 
@@ -168,6 +168,7 @@ namespace AwesomePokerGameSln
                 else
                 {
                     dcards[k] = dealerHand.GetCardI(k);
+                    dealerCardPics[k].BackgroundImage = CardImageHelper.cardToBitmap(dealerHand.GetCardI(k));
                 }
 
             }
