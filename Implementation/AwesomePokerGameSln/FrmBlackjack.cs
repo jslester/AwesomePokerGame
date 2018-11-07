@@ -91,7 +91,7 @@ namespace AwesomePokerGameSln
 
             // dealer makes his bet
             chatBox.Items.Add("Dealer: Place your bets!");
-            dealBet = 5 * rand.Next(20, 200);
+            dealBet = 5 * rand.Next(20, 110);
             poolVal = +dealBet;
             poolNum.Text = "$" + poolVal.ToString();
             chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
