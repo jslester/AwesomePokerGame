@@ -77,7 +77,7 @@ namespace AwesomePokerGameSln
 
             // dealer makes his bet
             chatBox.Items.Add("Dealer: Place your bets!");
-            dealBet = 5 * rand.Next(20, 200);
+            dealBet = 5 * rand.Next(20, 110);
             poolVal = +dealBet;
             poolNum.Text = "$" + poolVal.ToString();
             chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
@@ -118,6 +118,13 @@ namespace AwesomePokerGameSln
                 else
                 {
                     resultString = "It's a tie!";
+                    // pool gets split between players
+                    walletVal += poolVal / 2;
+                    walletNum.Text = "$" + walletVal.ToString();
+                    chatBox.Items.Add(string.Format("Both players awarded ${0}", (poolVal / 2).ToString()));
+                    poolVal = 0;
+                    poolNum.Text = "$" + poolVal.ToString();
+                
                 }
 
 
