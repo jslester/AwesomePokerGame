@@ -50,6 +50,9 @@ namespace AwesomePokerGameSln
                 dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
             }
             redealButton.Enabled = false;
+            betNum.Text = "$" + betVal.ToString();
+            walletNum.Text = "$" + walletVal.ToString();
+            poolNum.Text = "$" + poolVal.ToString();
         }
 
         private void DealCards()
@@ -204,20 +207,56 @@ namespace AwesomePokerGameSln
         {
 
             if (playerRevealedCount == 5 && playerValue <= 21)
+            {
                 chatBox.Items.Add("Dealer: You win!");
+                // award player's wallet pool
+                walletVal += poolVal;
+                walletNum.Text = "$" + walletVal.ToString();
+                chatBox.Items.Add(string.Format("Player awarded ${0}", poolVal.ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
             else if (playerValue == dealerValue)
                 chatBox.Items.Add("It's a tie!");
             else if (playerWins && dealerWins)
                 chatBox.Items.Add("Dealer: It's a tie!");
             else if (dealerWins || playerValue > 21)
+            {
                 chatBox.Items.Add("Dealer: I win!");
+                // reset pool (aka other player awarded pool)
+                chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
             else if (playerWins || dealerValue > 21)
+            {
                 chatBox.Items.Add("Dealer: You win!");
+                // award player's wallet pool
+                walletVal += poolVal;
+                walletNum.Text = "$" + walletVal.ToString();
+                chatBox.Items.Add(string.Format("Player awarded ${0}", poolVal.ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
             else if (playerValue > dealerValue)
+            {
                 chatBox.Items.Add("Dealer: You win!");
+                // award player's wallet pool
+                walletVal += poolVal;
+                walletNum.Text = "$" + walletVal.ToString();
+                chatBox.Items.Add(string.Format("Player awarded ${0}", poolVal.ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
             else if (playerValue < dealerValue)
+            {
                 chatBox.Items.Add("Dealer: I win!");
-            
+                // reset pool (aka other player awarded pool)
+                chatBox.Items.Add(string.Format("Dealer awarded ${0}", poolVal.ToString()));
+                poolVal = 0;
+                poolNum.Text = "$" + poolVal.ToString();
+            }
+
 
             redealButton.Enabled = true;
             hitButton.Enabled = false;
@@ -255,10 +294,26 @@ namespace AwesomePokerGameSln
 
             DealCards();
             SetBoard();
+
+            // dealer makes his bet
+            chatBox.Items.Add("Dealer: Place your bets!");
+            dealBet = 5 * rand.Next(20, 200);
+            poolVal = +dealBet;
+            poolNum.Text = "$" + poolVal.ToString();
+            chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
+            poolNum.Update();
         }
 
         private void hitButton_Click(object sender, EventArgs e)
         {
+            if(poolVal == 0)
+            {
+                chatBox.Items.Add("Please Place bet first");
+                return;
+            }
+
+            placeBet.Enabled = false;
+
             if (playerNums[playerRevealedCount] == 11)
             {
                 playerHighAce++;
@@ -355,8 +410,7 @@ namespace AwesomePokerGameSln
             betVal = 0;
             betNum.Text = "$" + betVal.ToString();
             betNum.Update();
-        }
-        // Winning Hand 
+        } 
 
         // Clicking chips
         private void fiveChip_Click(object sender, EventArgs e)
