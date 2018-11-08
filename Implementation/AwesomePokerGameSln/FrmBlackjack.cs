@@ -96,6 +96,7 @@ namespace AwesomePokerGameSln
             poolNum.Text = "$" + poolVal.ToString();
             chatBox.Items.Add(string.Format("Dealer added ${0} to pool", dealBet));
             poolNum.Update();
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void DealerPlay()
@@ -384,6 +385,7 @@ namespace AwesomePokerGameSln
             {
                 DealerPlay();
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void stayButton_Click(object sender, EventArgs e)
@@ -402,6 +404,7 @@ namespace AwesomePokerGameSln
             hundredChip.Enabled = false;
 
             DealerPlay();
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void TypeBox_Enter(object sender, EventArgs e)
@@ -445,6 +448,7 @@ namespace AwesomePokerGameSln
             betVal = 0;
             betNum.Text = "$" + betVal.ToString();
             betNum.Update();
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void resetBetButton_Click(object sender, EventArgs e)
@@ -474,6 +478,7 @@ namespace AwesomePokerGameSln
             {
                 chatBox.Items.Add("Insufficient Funds. Please add more.");
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void tenChip_Click(object sender, EventArgs e)
@@ -491,6 +496,7 @@ namespace AwesomePokerGameSln
             {
                 chatBox.Items.Add("Insufficient Funds. Please add more.");
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void twentyFiveChip_Click(object sender, EventArgs e)
@@ -508,6 +514,7 @@ namespace AwesomePokerGameSln
             {
                 chatBox.Items.Add("Insufficient Funds. Please add more.");
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void fiftyChip_Click(object sender, EventArgs e)
@@ -525,6 +532,7 @@ namespace AwesomePokerGameSln
             {
                 chatBox.Items.Add("Insufficient Funds. Please add more.");
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void hundredChip_Click(object sender, EventArgs e)
@@ -542,6 +550,7 @@ namespace AwesomePokerGameSln
             {
                 chatBox.Items.Add("Insufficient Funds. Please add more.");
             }
+            chatBox.TopIndex = chatBox.Items.Count - 1;
         }
 
         private void addFundsChip_Click(object sender, EventArgs e)
