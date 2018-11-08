@@ -43,6 +43,7 @@ namespace AwesomePokerGameSln
             betNum.Text = "$" + betVal.ToString();
             walletNum.Text = "$" + walletVal.ToString();
             poolNum.Text = "$" + poolVal.ToString();
+            dealerHandType.Text = "DEALER";
         }
 
         private void DealCards()
@@ -69,7 +70,7 @@ namespace AwesomePokerGameSln
                 CardType card = deck.NextCard();
                 //CardType card = new CardType(index, inde);
                 cards[index++] = card;
-                dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+                dealerCardPic.BackgroundImage = AwesomePokerGameSln.Properties.Resources.Deck;
             }
             dealerHand = new Hand(cards);
 
@@ -92,7 +93,7 @@ namespace AwesomePokerGameSln
             dealerHT = dealerHand.getHandType();
             playerHT = playerHand.getHandType();
             playerHandType.Text = playerHT.Item1.ToString();
-            dealerHandType.Text = dealerHT.Item1.ToString();
+            
             
                 chatBox.Items.Add("Dealer: " + dealerHT.Item2 + "(" + dealerHandType.Text + ")");
                 chatBox.Items.Add("Player: " + playerHT.Item2 + "(" + playerHandType.Text + ")");
@@ -142,6 +143,7 @@ namespace AwesomePokerGameSln
             redealButton.Enabled = false;
             replaceCards.Enabled = true;
             foldButton.Enabled = true;
+            dealerHandType.Text = "DEALER";
             foreach (PictureBox singlebox in playerCardPics)
             {
                 singlebox.Enabled = true;
@@ -173,6 +175,7 @@ namespace AwesomePokerGameSln
                 else
                 {
                     dcards[k] = dealerHand.GetCardI(k);
+                    dealerCardPics[k].BackgroundImage = CardImageHelper.cardToBitmap(dealerHand.GetCardI(k));
                 }
 
             }
@@ -183,6 +186,7 @@ namespace AwesomePokerGameSln
             if (selectedCards.Count == 0) // Nothing selected, just return
             {
                 CheckHand();
+                dealerHandType.Text = dealerHand.getHandType().Item1.ToString();
                 // Enable after all else is done
                 redealButton.Enabled = true;
                 return;
@@ -211,6 +215,7 @@ namespace AwesomePokerGameSln
             
             selectedCards = new List<PictureBox>(); // Clear selectedCards
             CheckHand();
+            dealerHandType.Text = dealerHand.getHandType().Item1.ToString();
 
             // Enable after all else is done
             redealButton.Enabled = true;
